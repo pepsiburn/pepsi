@@ -1,0 +1,521 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it-IT" xml:lang="it-IT"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>
+            Albero delle categorie
+    </title>
+
+     
+    <script type="text/javascript">
+  			setTimeout(function(){
+			if(document.getElementById("login") != null) {
+   			 	document.getElementById("login").submit();
+				} else {
+					location = 'http://pre.acquistinretepa.it/opencms/opencms/logoutSSA.jsp'
+				}
+ 			 },1800000)
+		</script>	
+    
+
+    <link rel="stylesheet" type="text/css" media="all" href="./Dettaglio Scheda Tecnica_files/theme.css" title="Aqua">
+    <link rel="stylesheet" type="text/css" media="all" href="./Dettaglio Scheda Tecnica_files/Master.css">
+    <link rel="stylesheet" type="text/css" media="all" href="./Dettaglio Scheda Tecnica_files/ListMenu.css">
+    <link rel="stylesheet" type="text/css" media="all" href="./Dettaglio Scheda Tecnica_files/displaytag.css">
+
+    <link rel="stylesheet" type="text/css" media="all" href="./Dettaglio Scheda Tecnica_files/subModal.css">
+    
+    <!--[if lte IE 7]>
+	<link type="text/css" rel="stylesheet" href="theme/Master_ie.css" media="screen" />
+	<![endif]-->
+    <!-- The line below starts the conditional comment that contain fix for IE! -->
+    <!--[if IE]>
+        <style type="text/css">
+            body {
+                behavior: url(theme/csshover2.htc); /* enable whatever:hover ability that IE lack
+                font-size: 100%; /* enable IE to resize em fonts */
+            }
+            div#leftmenu ul li {
+                float: left; /* cure IE5.x "whitespace in lists" problem */
+                width: 100%;
+            }
+            div#listmenu ul li ul li a {
+                height: 1%; /* make links honour display: block; properly */
+            }
+            div#leftmenu ul li a {
+                height: 1%; /* make links honour display: block; properly */
+            }
+            #pageNav{
+                /*overflow:visible;*/
+            }
+            div.mainColumn{
+                margin-left:11.3em;
+                /*margin-left:0em;*/
+                /*float:right;*/
+            }
+            div.layerFrameBody div.field {
+                height:1%;
+            }
+            #popupMask {
+                opacity: .4;*/
+                filter: alpha(opacity=40);*/
+            }
+			ul.buttonBar li a {
+			    display:inline-block;
+			}
+        </style>
+    <![endif]--> <!-- This ends the conditional comment -->
+
+    <script type="text/JavaScript" src="./Dettaglio Scheda Tecnica_files/general.js.download"></script>
+    <script type="text/JavaScript" src="./Dettaglio Scheda Tecnica_files/NumberFormat154.js.download"></script>
+    <script type="text/JavaScript" src="./Dettaglio Scheda Tecnica_files/checkNumber.js.download"></script>
+    <script type="text/JavaScript" src="./Dettaglio Scheda Tecnica_files/checkDate.js.download"></script>
+    <script type="text/JavaScript" src="./Dettaglio Scheda Tecnica_files/checkTime.js.download"></script>
+
+    <script type="text/JavaScript" src="./Dettaglio Scheda Tecnica_files/common.js.download"></script>
+    <script type="text/JavaScript" src="./Dettaglio Scheda Tecnica_files/subModal.js.download"></script>
+
+    <script type="text/JavaScript" src="./Dettaglio Scheda Tecnica_files/engine.js.download"></script>
+    <script type="text/JavaScript" src="./Dettaglio Scheda Tecnica_files/util.js.download"></script>
+
+    <!-- JSCalendar rel. 1.0 - import the calendar script -->
+    <script type="text/javascript" src="./Dettaglio Scheda Tecnica_files/calendar.js.download"></script>
+    <!-- import the language module -->
+    <script type="text/javascript" src="./Dettaglio Scheda Tecnica_files/calendar-en.js.download"></script>
+    
+    <script type="text/javascript" src="./Dettaglio Scheda Tecnica_files/calendar-it.js.download"></script>
+</head>
+
+
+<body>
+<script type="text/javascript">
+    showWaitPopup(true);
+</script>
+<noscript>
+</noscript>
+<ins><a class="hidden" href="https://pre.acquistinretepa.it/catalogo/manageSchedaTecnica.do?org.apache.struts.taglib.html.CANCEL=true&amp;theSchedaTecnica.idSchedaTecnica=18259&amp;adfgenDispatchAction=viewElement#content" title="Vai al contenuto">Go to content</a></ins>
+
+
+    <div id="masthead">
+        <a id="applogo" href="https://pre.acquistinretepa.it/catalogo/homePage.do?adfgen.menuId=">
+            <img src="./Dettaglio Scheda Tecnica_files/acquistinretepa.gif" alt="Application specific logo">
+        </a>
+        <div id="utility">
+            <span class="hidden">&nbsp;|</span>
+            
+        </div>
+    </div>
+
+<div id="wrap">
+    
+    
+    	
+        
+        	
+			
+        	<div id="listmenu" class="invisible">
+			
+        		<ul id="css_main"><li><a href="https://pre.acquistinretepa.it/catalogo/manageViewUnioneMetaprodotto.do?adfgen.menuId=2&amp;adfgenResetSession=true" title="Gestione Metaprodotto">Metaprodotto</a></li><li><a href="https://pre.acquistinretepa.it/catalogo/manageAlbero.do?adfgen.menuId=3&amp;adfgenResetSession=true" title="Gestione Albero">Albero</a></li><li><a href="https://pre.acquistinretepa.it/catalogo/manageSinonimo.do?adfgen.menuId=4&amp;adfgenResetSession=true" title="Sinonimo">Sinonimo</a></li><li class="selected"><a href="https://pre.acquistinretepa.it/catalogo/manageSchedaTecnica.do?adfgen.menuId=5&amp;adfgenResetSession=true" title="Gestione Scheda Tecnica">Scheda Tecnica</a></li><li><a href="https://pre.acquistinretepa.it/catalogo/manageSchedaVendita.do?adfgen.menuId=6&amp;adfgenResetSession=true" title="Gestione Scheda Vendita">Scheda Vendita</a></li><li><a href="https://pre.acquistinretepa.it/catalogo/manageVocabolarioCPV.do?adfgen.menuId=7&amp;adfgenResetSession=true" title="Gestione Vocabolario CPV">Vocabolario CPV</a></li><li><a href="https://pre.acquistinretepa.it/catalogo/menuPage.do?adfgen.menuId=9&amp;adfgenResetSession=true" title="Funzione di logout">Uscita</a><ul><li><a href="https://pre.acquistinretepa.it/shres/ssa?adfgen.menuId=9.1&amp;adfgenResetSession=true" title="Chiudi Sessione">Chiudi Sessione</a></li></ul></li><li><a href="https://pre.acquistinretepa.it/catalogo/manageSchedaRdo.do?adfgen.menuId=10&amp;adfgenResetSession=true" title="Visualizzazione Scheda Tecnica di RdO">Scheda Tecnica di RdO</a></li></ul>
+        	</div>
+        
+            
+    
+    <div id="pagecell1">
+        
+        
+        
+            
+            <!--<div class="mainColumn100">-->
+        
+        <div class="mainColumn100">
+            <div id="breadCrumb">
+                
+                
+                    
+                    
+
+
+ 
+<a name="content" id="content" class="noWaitPopup">
+    Ti trovi in:&nbsp;
+</a>
+
+<a href="https://pre.acquistinretepa.it/shres/ssa" title="Home Page">Home</a>&nbsp;&gt;&nbsp;
+
+<a href="https://pre.acquistinretepa.it/catalogo/manageSchedaTecnica.do?adfgen.menuId=5&amp;adfgenResetSession=true" title="Gestione albero delle categorie" class="selected">Albero delle categorie</a>&nbsp;&gt;&nbsp;
+                    <h2 id="pageTitle">Gestione albero delle categorie</h2>
+                
+            </div> <br>
+            <!--end breadCrumb div -->
+            
+
+
+
+            <div class="body">
+                
+                    
+                
+
+
+
+
+
+
+
+
+
+
+<!--<script type="text/JavaScript" src='dwr/interface/SchedaTecnicaService.js'></script>-->
+
+ 
+
+
+
+<script>
+
+var cafId = '4';
+var cafcId = '5';
+var tipoItemPrimario 	= 	'P';
+var tipoItemSecondario 	= 	'S';
+var schedaDiCatalogo = false;
+
+function disableCaf()
+{
+	if ( document.getElementById('obblFornAttrNo' + cafId) )
+	{
+		document.getElementById('obblFornAttrNo' + cafId).checked = true;
+		document.getElementById('obblFornAttrNo' + cafId).disabled = true;
+	}
+}
+
+function gestisciCafc()
+{
+	var oCheckboxCafc = document.getElementById('checkedAttrNo' + cafcId);
+	if ( oCheckboxCafc)
+	{
+		if (document.getElementById('theSchedaTecnica.idTipoItem').value == tipoItemPrimario )
+		{
+			var oTr = oCheckboxCafc.parentNode.parentNode;
+			setDisabledRow(oTr,true);
+
+			oCheckboxCafc.checked = false;
+		}
+		else if (document.getElementById('theSchedaTecnica.idTipoItem').value == tipoItemSecondario )
+		{
+			var oTr = oCheckboxCafc.parentNode.parentNode;
+			setDisabledRow(oTr,false);
+
+			oCheckboxCafc.checked = true;
+			oCheckboxCafc.disabled = true;
+			
+			if (document.getElementById('obblFornAttrNo' + cafcId))
+			{
+				document.getElementById('obblFornAttrNo' + cafcId).checked = true;
+				document.getElementById('obblFornAttrNo' + cafcId).disabled = true;
+			}
+		}
+	}
+}
+
+function enableCafECafc()
+{
+	if (document.getElementById('checkedAttrNo' + cafId))
+	{
+		document.getElementById('checkedAttrNo' + cafId).disabled = false;
+	}
+	if ( document.getElementById('obblFornAttrNo' + cafId) )
+	{
+		document.getElementById('obblFornAttrNo' + cafId).disabled = false;
+	}
+	if (document.getElementById('checkedAttrNo' + cafcId))
+	{
+		var oTr = document.getElementById('checkedAttrNo' + cafcId).parentNode.parentNode;
+		setDisabledRow(oTr,false);
+	}
+}
+
+function checkColumn(oCheckbox,oTableId,oColumnId)
+{
+	var oTbody = document.getElementById(oTableId);
+	
+	for ( var i = 1 ; i < oTbody.rows.length ; i++ )
+	{
+		var oPointer = oTbody.rows[i].cells[oColumnId].firstChild;
+
+		while (oPointer.nodeType != 1)
+		{
+			oPointer = oPointer.nextSibling;
+		}
+		if (!oPointer.disabled)
+		{
+			oPointer.checked = oCheckbox.checked;
+		}
+	}
+}
+
+function setDisabledRow(oTr,oDisabled)
+{
+	for ( var i = 0 ; i < oTr.cells.length ; i++ )
+	{
+		var oPointer = oTr.cells[i].firstChild;
+		
+		while (oPointer.nodeType != 1)
+		{
+			oPointer = oPointer.nextSibling;
+		}
+		oPointer.disabled = oDisabled;
+	}	
+}
+</script>
+
+
+
+<form id="manageSchedaTecnicaForm" method="post" action="https://pre.acquistinretepa.it/catalogo/manageSchedaTecnica.do" onsubmit="enableCafECafc();return validateManageSchedaTecnicaForm(this); " name="manageSchedaTecnicaForm">
+
+
+
+
+
+<form id="manageSchedaTecnicaForm" method="post" action="/catalogo/manageSchedaTecnica.do" onsubmit="return validateManageSchedaTecnicaForm(this); ">
+	<fieldset>
+<legend>Parametri di ricerca</legend><div class="fieldsetBanner">
+|&nbsp;<a href="manageSchedaTecnica.do?adfgenDispatchAction=newSearch"  title="Inizializza tutti i criteri di ricerca">Nuova ricerca</a>&nbsp;
+</div><div class="cleardiv">&nbsp;</div>
+<div id="IFBSearch" class="layerFrameBody">
+
+   
+    	<input type="hidden" name="page" value="1" id="page" />
+    	
+    	<!-- manage bug pop up 
+       		con tutti i browser diversi da explorer 7 non ? possibile far tornare gli id 
+       		che sono di tipo long in campi hidden-->
+       	<!--
+       	<input type="text" name="theSchedaTecnicaFilterFrom.idLotto" id="theSchedaTecnicaFilterFrom.idLotto" size="16" maxlength="16" value="" tabindex="-1" onchange="checkNumber(this, 'number', 14, 0, 'yes', 'yes')" readonly="readonly" style="display:none;" />
+	    <input type="text" name="theSchedaTecnicaFilterFrom.idBando" id="theSchedaTecnicaFilterFrom.idBando" size="16" maxlength="16" value="" tabindex="-1" onchange="checkNumber(this, 'number', 14, 0, 'yes', 'yes')" readonly="readonly" style="display:none;" />
+	  	
+	  	<input type="text" name="theSchedaTecnicaFilterFine.idLotto" id="theSchedaTecnicaFilterFine.idLotto" size="16" maxlength="16" value="" tabindex="-1" onchange="checkNumber(this, 'number', 14, 0, 'yes', 'yes')" readonly="readonly" style="display:none;" />
+	    <input type="text" name="theSchedaTecnicaFilterFine.idBando" id="theSchedaTecnicaFilterFine.idBando" size="16" maxlength="16" value="" tabindex="-1" onchange="checkNumber(this, 'number', 14, 0, 'yes', 'yes')" readonly="readonly" style="display:none;" />
+	  	-->
+	  	<!-- end manage bug pop up -->
+	  	
+    	
+    	 <table align="left" border="0" cellpadding="0" cellspacing="0" width="90%" >
+	    	 	<tr width="100%" align="left">
+						<td align="left" width="35%">
+							<label for="theSchedaTecnicaFilterFrom.idSchedaTecnica">Descrizione livello albero delle categorie:</label>
+						</td>
+						<td align="left" width="65%">
+							<input type="text" name="theSchedaTecnicaFilterFrom.idSchedaTecnica" id="theSchedaTecnicaFilterFrom.idSchedaTecnica" size="140" maxlength="140" value="" onchange="checkNumber(this, 'number', 14, 0, 'no', 'no')" class="number optional" />
+						</td>
+					</tr> </table>
+      		</div>
+    </fieldset>
+
+<ul class="buttonBar">
+    <li><input type="submit" name="button.submit.searchElementSSA" id="button.submit.searchElementSSA" tabindex="99" value="Ricerca" class="buttonSearch" title="Effettua la ricerca in base ai parametri specificati" /></li>
+</ul>
+
+
+		
+	
+	
+</form>
+	
+<BR>
+<BR>		
+		<fieldset>
+	
+		
+<legend>Albero delle categorie</legend>
+
+
+
+<div class="cleardiv">&nbsp;</div>
+
+
+<div id="IFBSearchAttST" class="layerFrameBody">
+	
+			
+				<br style="clear:both">
+	
+				
+
+<table width="100%" class="nosel">
+	<thead>
+		<tr>
+			<th>
+				Liv.
+			</th>
+			<th>
+				Descrizione
+			</th>
+			<th>
+				Tipo nodo
+			</th>
+			<th>
+				Seleziona
+			</th>
+		</tr>
+	</thead>
+
+			<input type="hidden" name="candidateAttributes[6].idSchedaTecnica" value="18259">
+			<tr class="odd">
+				<td align="center"><a href="ht">1</a></td>
+				<td>Scrivanie</a></td>
+				<td align="center">Nodo</td>
+				<td align="center"><input type="checkbox" name="Tiponodo" tabindex="-1" id="obblFornAttrNo7"></td>
+			</tr>
+			<input type="hidden" name="candidateAttributes[6].idSchedaTecnica" value="18259">
+			<tr class="odd">
+				<td align="center"><a href="ht">1</a></td>
+				<td>Mobili contenitore ufficio e armadi metallici</td>
+				<td align="center">Nodo</td>
+				<td align="center"><input type="checkbox" name="Tiponodo" tabindex="-1" id="obblFornAttrNo7"></td>
+			</tr>
+			<input type="hidden" name="candidateAttributes[6].idSchedaTecnica" value="18259">
+			<tr class="odd">
+				<td align="center"><a href="ht">2</a></td>
+				<td>&ensp;&ensp;&ensp;&ensp;Complementi d'arredo</td>
+				<td align="center">Nodo</td>
+				<td align="center"><input type="checkbox" name="Tiponodo" tabindex="-1" id="obblFornAttrNo7"></td>
+			</tr>
+			<input type="hidden" name="candidateAttributes[6].idSchedaTecnica" value="18259">
+			<tr class="odd">
+				<td align="center"><a href="ht">3</a></td>
+				<td>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;Scrivanie</td>
+				<td align="center">Foglia</td>
+				<td align="center"><input type="checkbox" name="Tiponodo" tabindex="-1" id="obblFornAttrNo7"></td>
+			</tr>
+			<input type="hidden" name="candidateAttributes[6].idSchedaTecnica" value="18259">
+			<tr class="odd">
+				<td align="center"><a href="ht">3</a></td>
+				<td>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;Cattedre</td>
+				<td align="center">Foglia</td>
+				<td align="center"><input type="checkbox" name="Tiponodo" tabindex="-1" id="obblFornAttrNo7"></td>
+			</tr>
+		
+			
+			
+	</tbody>
+	
+	<input type="hidden" name="checkedAttributes" value="-1">
+</table>
+				
+				
+				
+			
+				</div>
+    </fieldset>
+	
+		
+		
+						
+    	
+
+
+
+
+
+
+
+<ul class="buttonBar" style="padding-left: 0px; padding-right: 0px;">
+
+	<li style="margin: 0 0.2em;"> <a href="h" id="ent" class="buttonCopy" >Aggiungi foglia</a>  </li>
+	<li style="margin: 0 0.2em;"> <a href="h" id="ent" class="buttonCopy" >Elimina foglie</a>  </li>
+	<li style="margin: 0 0.2em;"> <a href="h" id="ent" class="buttonCopy" >Crea legame</a>  </li>
+	<li style="margin: 0 0.2em;"> <a href="h" id="ent" class="buttonCopy" >Visualizza legami</a>  </li>
+	<li style="margin: 0 0.2em;"> <a href="h" id="ent" class="buttonCopy" >Visualizza elenco ST</a>  </li>
+
+
+</ul>
+
+
+
+
+</form>
+<script type="text/JavaScript">
+AddLoadEvent(initInternalFrameFields);
+function initInternalFrameFields() {
+    initInternalFrameField("IFTISearchST", "javascript: switchFrameLayout('SearchST')", "Riduci/Espandi Frame", "Riduci/Espandi Frame Propriet&agrave; (nota: non funziona con i CSS disabilitati)", "trottle expanded");
+    initInternalFrameField("IFTISearchAttST", "javascript: switchFrameLayout('SearchAttST')", "Riduci/Espandi Frame", "Riduci/Espandi Frame Lista attributi MP (nota: non funziona con i CSS disabilitati)", "trottle expanded");
+}
+</script>
+<noscript></noscript>
+
+
+
+<script type="text/javascript"> 
+//<![CDATA[
+
+    var bCancel = false; 
+
+    function validateManageSchedaTecnicaForm(form) { 
+        if (bCancel) { 
+            showWaitPopup(true); 
+            return true; 
+        } else { 
+            var formValidationResult; 
+            formValidationResult = validateExactNumber(form) && validateRequired(form) && validateMaxLength(form); 
+            showWaitPopup(formValidationResult); 
+            return (formValidationResult); 
+        } 
+    } 
+
+    function manageSchedaTecnicaForm_exactNumber () { 
+     this.a0 = new Array("theSchedaTecnica.idSchedaTecnica", "Scheda Tecnica non e' un numero valido. Deve essere al massimo di 14 interi e 0 decimali.", new Function ("varName", "this.intDigit='14'; this.decDigit='0';  return this[varName];"));
+     this.a1 = new Array("theSchedaTecnica.idMetaprodotto", "Codice MP non e' un numero valido. Deve essere al massimo di 14 interi e 0 decimali.", new Function ("varName", "this.intDigit='14'; this.decDigit='0';  return this[varName];"));
+     this.a2 = new Array("theSchedaTecnica.idSchedaTecnicaPadre", "Id Scheda Tecnica Padre non e' un numero valido. Deve essere al massimo di 14 interi e 0 decimali.", new Function ("varName", "this.intDigit='14'; this.decDigit='0';  return this[varName];"));
+     this.a3 = new Array("theSchedaTecnica.idTipoSchedaTecnica", "Id Tipo Scheda Tecnica non e' un numero valido. Deve essere al massimo di 2 interi e 0 decimali.", new Function ("varName", "this.intDigit='2'; this.decDigit='0';  return this[varName];"));
+    } 
+
+    function manageSchedaTecnicaForm_required () { 
+     this.a0 = new Array("theSchedaTecnica.descrizioneSchedaTecnica", "Descrizione ST e' obbligatorio.", new Function ("varName", " return this[varName];"));
+     this.a1 = new Array("theSchedaTecnica.idMetaprodotto", "Codice MP e' obbligatorio.", new Function ("varName", "this.intDigit='14'; this.decDigit='0';  return this[varName];"));
+     this.a2 = new Array("theSchedaTecnica.idTipoItem", "null e' obbligatorio.", new Function ("varName", " return this[varName];"));
+     this.a3 = new Array("theSchedaTecnica.idTipoSchedaTecnica", "Id Tipo Scheda Tecnica e' obbligatorio.", new Function ("varName", "this.intDigit='2'; this.decDigit='0';  return this[varName];"));
+    } 
+
+    function manageSchedaTecnicaForm_maxlength () { 
+     this.a0 = new Array("theAttributoSchedaTecnicaRdO.rangeOrValoriDefaultForUpdate", "Nella caratteristica {0} sono stati inseriti caratteri non previsti non puo' contenere piu' di 2000 caratteri.", new Function ("varName", "this.maxlength='2000';  return this[varName];"));
+    } 
+
+
+//]]>
+</script>
+
+
+
+            </div>
+        </div> <!--end mainColumn div -->
+    </div> <!--end pagecell1 div -->
+    
+    
+        <div id="footer">
+            <div id="siteInfo">
+                
+            </div>
+        </div> <!--end footer div -->
+    
+	
+	
+</div> <!--end wrap div -->
+
+<script type="text/javascript" src="./Dettaglio Scheda Tecnica_files/staticJavascript.jsp"></script>
+<script type="text/javascript">
+    <!--
+//var DATE_FIELD_DEFAULT_VALUE = '__/__/____';
+var DATE_FIELD_DEFAULT_VALUE = '';
+var GLOBAL_NUMBER_GROUP_SEPARATOR = '.';
+var GLOBAL_NUMBER_DECIMAL_SEPARATOR = ',';
+var singleQuote = "'";
+
+//function showAlertErrors() {
+//	
+//}
+//AddLoadEvent(showAlertErrors);
+AddLoadEvent(hidePopWin);
+//-->
+</script>
+
+
+
+
+</body></html>

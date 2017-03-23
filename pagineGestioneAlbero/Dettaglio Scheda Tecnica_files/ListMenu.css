@@ -1,0 +1,317 @@
+/* the horizontal menu starts here */
+div#listmenu {
+    border: 1px solid #069;
+    font-size: 0.8em;
+    background-color: #CCF;
+    z-index: 3000;
+    padding-left: 1em;
+    background-image: url( ../images/oriz_small.gif );
+    width: 99%;
+    float: left;
+    position: relative;
+}
+
+div#listmenu ul {
+    margin: 0 0 0 0px;
+    padding: 0px;
+}
+
+div#listmenu li {
+    float: left; /* causes the list to align horizontally instead of stack */
+    position: relative; /* positioning context for the absolutely positioned drop-down */
+    list-style-type: none; /* removes the bullet off each list item */
+    background-color: #E8EEF3; /*sets the background of the menu items */
+    border-right: 1px solid #069; /* creates dividing lines between the li elements */
+    background-image: url( ../images/oriz_inv_med.gif );
+    font-weight: normal;
+    font-size: 100%;
+}
+
+div#listmenu li:first-child {
+    border-left: 1px solid #069; /*the first vertical line on the menu */
+}
+
+div#listmenu li:hover {
+    background-color: #FFF; /*sets the background of the menu items */
+    background-image: url( ../images/oriz_inv_small.gif );
+}
+
+div#listmenu li:active {
+    background-color: #FFF; /*sets the background of the menu items */
+    background-image: url( ../images/oriz_med.gif );
+}
+
+div#listmenu li.selected {
+    font-weight: bold;
+    background-image: url( ../images/oriz_med.gif );
+}
+
+div#listmenu li.selected a {
+    text-decoration: underline;
+}
+
+div#listmenu li.selected * a {
+    text-decoration: none;
+    font-weight: normal;
+}
+
+div#listmenu li.selected * a:hover {
+    text-decoration: underline;
+}
+
+div#listmenu a {
+    display: block; /*makes list items in drop down highlight and wrapped lines indent correctly */
+    padding: 4px 6px; /*creates space each side of menu item's text */
+    text-decoration: none; /* removes the underlining of the link */
+    color: #039; /* sets the type color */
+}
+
+div#listmenu a:hover {
+    text-decoration: underline;
+}
+
+div#listmenu li.disabled a {
+    color: #666;
+}
+
+div#listmenu li.restricted a {
+    background-image: url( ../images/safetylook.gif );   
+    background-repeat: no-repeat; 
+    background-position: 0.1em 0.2em;
+    padding-left: 12px;
+}
+
+/* the horizontal menu ends here */
+
+/* the drop-down starts here */
+div#listmenu ul li ul {
+    margin: 0px; /* prevents the TEMP value inheriting from the horiz menu - OK to remove if you remove TEMP above */
+    position: absolute; /* positions the drop-down ul in relation to its relatively positioned li parent */
+    width: 14em; /*sets the width of the menu - in combo with the li's 100% width, makes the menu stack*/
+    left: -1px; /*aligns the drop exactly under the menu */
+    padding-left: 10px;
+    z-index: 3000;
+    background-color: #006699;
+}
+
+div#listmenu ul li ul a {
+    padding: 2px 6px; /*creates space each side of menu item's text */
+}
+
+div#listmenu ul li ul li {
+    width: 100%; /* makes the list items fill the list container (ul) */
+    border-left: 1px solid #069; /*  three sides of each drop-down item */
+    border-bottom: 1px solid #069;
+    border-right: 1px solid #069;
+    padding: 0 0 1px;
+}
+
+div#listmenu ul li ul li:first-child {
+    border-top: 1px solid #069; /*the top edge of the dropdown */
+}
+
+/* make the drop-down display as the menu is rolled over */
+div#listmenu ul li ul {
+    display: none; /* conceals the drop-down when menu not hovered */
+}
+
+div#listmenu ul li:hover ul {
+    display: block; /* shows the drop-down when the menu is hovered */
+}
+
+/* pop-out starts here */
+body div#listmenu ul li ul li ul {
+    visibility: hidden; /* same effect as display:none in this situation */
+    top: -1px;
+    left: 14em;
+}
+
+div#listmenu ul li ul li:hover ul {
+    visibility: visible;
+}
+
+/* same effect as display:block in this situation */
+
+/* another level of pop-outs */
+div#listmenu ul li ul li:hover ul li ul {
+    display: none;
+}
+
+/* conceals the drop-down when menu not hovered */
+div#listmenu ul li ul li ul li:hover ul {
+    display: block;
+}
+
+/* shows the drop-down when the menu is hovered */
+
+/* THE HACK ZONE - */
+/* hack for IE (all flavors) so the menu has a vertical line on the left */
+* html div#listmenu ul {
+    float: left;
+    border-left: 1px solid #069;
+}
+
+/* add a top line to drops and pops in IE browsers - can't read :first-child */
+* html div#listmenu ul li ul {
+    border-top: 1px solid #069;
+    border-left: 0px; /* stops the drop inheriting the ul border */
+}
+
+/* the Tantek hack to feed IE Win 5.5-5.0 a lower value to get the pop-out to touch the drop-down */
+* html div#listmenu ul li ul li ul {
+    left: 13.04em;
+    voice-family: "\"}\"";
+    voice-family: inherit;
+    left: 14em;
+}
+
+/* and the "be nice to Opera" rule */
+html>body div#listmenu ul li ul li ul {
+    top: -1px;
+    left: 14em;
+}
+
+/* an Opera-only hack to fix a redraw problem by invisibly extending the ul */
+/* the first-level drop stays open for 100px below the bottom but at least it works */
+/* this can be reduced to as little as 22px if you don't have pop-outs */
+/* the pop-out menu stays open for 22px below the bottom but at least it works */
+
+    /* NO MORE NEED FOR 9.0 VERSION OF OPERA !!!
+    @media all and (min-width: 0px) {
+       body div#listmenu ul li ul {
+               padding-bottom:70px;
+       }
+       body div#listmenu ul li ul li ul {
+               padding-bottom:22px;
+       }
+       body div#listmenu ul li ul li ul li ul li:hover {
+               visibility:visible;
+       }
+    }
+    */
+
+/*end Opera hack */
+/* end of hack zone */
+/* END OF LIST-BASED MENU */
+
+/* LEFT MENU */
+div#leftmenu {
+    width: 100%;
+    float: left;
+    margin-top: 1px;
+    padding: 1em 0em 0em 0em;
+}
+
+div#leftmenu ul {
+    width: 100%;
+    padding: 0em;
+    border-top: 1px solid #069;
+    margin: 0em;
+}
+
+div#leftmenu li {
+    list-style-type: none; /* removes the bullet off each list item */
+    background-color: #E8EEF3; /*sets the background of the menu items */
+    background-image: url( ../images/oriz_small.gif );
+    border-bottom: 1px solid #069; /*dividers on the menu */
+/*  *ADDED****/
+    border-left: 1px solid #069;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+div#leftmenu li.selected {
+    font-weight: bold;
+    background-image: url( ../images/oriz_med.gif );
+}
+
+div#leftmenu li.selected a {
+    text-decoration: underline;
+}
+
+div#leftmenu li.selected * a {
+    text-decoration: none;
+}
+
+div#leftmenu li:hover {
+    background-color: #FFF; /*sets the background of the menu items */
+    background-image: url( ../images/oriz_inv_small.gif );
+}
+
+div#leftmenu li:active {
+    background-color: #FFF; /*sets the background of the menu items */
+    background-image: url( ../images/oriz_med.gif );
+}
+
+div#leftmenu a {
+    display: block; /*makes list items in drop down highlight and wrapped lines indent correctly */
+    padding: 0.4em 0.2em; /*creates space each side of menu item's text */
+    text-decoration: none; /* removes the underlining of the link */
+    color: #039; /* sets the type color */
+}
+
+div#leftmenu a:hover {
+    text-decoration: underline;
+}
+
+div#leftmenu li.disabled a {
+    color: #666;
+}
+
+div#leftmenu li.restricted a {
+    background-image: url( ../images/safetylook.gif );   
+    background-repeat: no-repeat; 
+    background-position: 0.1em 0.2em;
+    padding-left: 12px;
+}
+
+/* the horizontal menu ends here */
+
+/* the drop-down starts here */
+div#leftmenu ul li ul {
+    margin: 0 0 0 0%;
+    padding: 0 0 0 6%;
+    background-color: #069;
+    width: 94%;
+    border-top: 1px solid #069;
+}
+
+div#leftmenu ul li ul a {
+    display: block; /*makes list items in drop down highlight and wrapped lines indent correctly */
+    padding: 0.3em 0.2em; /*creates space each side of menu item's text */
+    text-decoration: none; /* removes the underlining of the link */
+    color: #039; /* sets the type color */
+    font-size: 90%;
+}
+
+/* ul of 3 level sub-menu */
+div#leftmenu ul li ul li ul {
+    margin: 0 0 0 0%;
+    padding: 0 0 0 6%;
+    background-image: url( ../images/pixel.gif );
+    background-color: #069;
+    width: 94%;
+    border-top: 1px solid #069;
+}
+
+/* li of 3 level sub-menu */
+div#leftmenu ul li ul li ul li {
+    background-color: #E8EEF3; /*sets the background of the menu items */
+    background-image: url( ../images/oriz_small.gif );
+    border-bottom: 1px solid #069; /*dividers on the menu */
+/*  *ADDED****/
+}
+
+div#leftmenu ul li ul li ul li a {
+    display: block;
+    padding: 0.2em 0.2em; /*creates space each side of menu item's text */
+    text-decoration: none;
+    color: #039;
+    font-size: 80%;
+}
+
+div#leftmenu ul li ul li ul li a:hover {
+    text-decoration: underline;
+}
+
+/* END OF LIST-BASED MENU */

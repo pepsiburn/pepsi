@@ -1,0 +1,360 @@
+/* Taglib display style for table with selection features */
+table.sel thead tr {
+    PADDING-RIGHT: 1px;
+    BACKGROUND-IMAGE: url( "../images/oriz_small.gif" );
+    BACKGROUND-REPEAT: repeat;
+    font-weight: bold;
+}
+
+table.sel tr.even {
+    PADDING-RIGHT: 1px;
+    COLOR: #00007A;
+    BACKGROUND-COLOR: #F5F5F5;
+    cursor: pointer;
+}
+
+table.sel tr.odd {
+    PADDING-RIGHT: 1px;
+    COLOR: #00007A;
+    BACKGROUND-COLOR: #EBEBEB;
+    cursor: pointer;
+}
+table.sel tr.blank {
+    PADDING-RIGHT: 1px;
+    COLOR: #00007A;
+    BACKGROUND-COLOR: #EBEBEB;
+    cursor: pointer;
+	height: 10px !important;
+}
+
+table.sel tr.selected {
+    PADDING-RIGHT: 1px;
+    font-weight: BOLD;
+    COLOR: #00007A;
+    BACKGROUND-COLOR: #d0dee9;
+    cursor: pointer;
+}
+
+table.sel tr.selectedPopup {
+    PADDING-RIGHT: 1px;
+    font-weight: normal;
+    COLOR: #00007A;
+    BACKGROUND-COLOR: #d0dee9;
+    cursor: pointer;
+}
+
+table.sel th.sorted {
+    background-color: transparent;
+}
+
+table.sel th.sorted a, th.sortable a {
+    background-position: right;
+    display: block;
+    width: 100%;
+}
+
+table.sel th.sortable a {
+    background-image: url( ../images/arrow_off.png );
+    background-repeat: no-repeat;
+    background-position: right;
+    padding-right: 7px;
+}
+
+table.sel th.order1 a {
+    background-image: url( ../images/arrow_down.png );
+}
+
+table.sel th.order2 a {
+    background-image: url( ../images/arrow_up.png );
+}
+
+/* ---------------------------------------- */
+
+/* Taglib display style for table without selection features */
+table.nosel {
+    width:100%;
+    table-layout:auto;
+    border-left: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+}
+
+table.nosel tr {
+    PADDING-RIGHT: 1px;
+    COLOR: #00007A;
+}
+
+table.nosel td {
+    border-top: 1px solid #aaa;
+    border-right: 1px solid #aaa;
+}
+
+table.nosel thead tr {
+    BACKGROUND-IMAGE: url( "../images/oriz_small.gif" );
+    BACKGROUND-REPEAT: repeat;
+    font-weight: bold;
+}
+
+table.nosel thead tr th {
+    background-color:transparent;
+    padding: 0px 0px 0px 0px;
+    margin: 0px;
+    border-top: 1px solid #aaa;
+    border-right: 1px solid #aaa;
+}
+
+table.nosel tr th a {
+    display:block;
+    width: 100%;
+}
+
+table.nosel th.sortable a {
+    width: 90%;
+    padding-right: 10%;
+    background-image: url( ../images/arrow_off.png );
+    background-position: right;
+    background-repeat: no-repeat;
+}
+
+table.nosel td a {
+    display: block;
+    width: 100%;
+}
+
+table.nosel th.order1 a {
+    background-image: url( ../images/arrow_down.png );
+}
+
+table.nosel th.order2 a {
+    background-image: url( ../images/arrow_up.png );
+}
+
+table.nosel tr.even {
+    BACKGROUND-COLOR: #F5F5F5;
+}
+
+table.nosel tr.odd {
+    BACKGROUND-COLOR: #EBEBEB;
+}
+table.nosel tr.blank {
+    BACKGROUND-COLOR: #EBEBEB;
+	height: 15px !important;
+}
+
+/* ---------------------------------------- */
+
+/* test styles */
+
+/*thead tr {*/
+    /*background-color: #fc0;*/
+/*}*/
+/**/
+/*th.sorted {*/
+    /*background-color: orange;*/
+/*}*/
+/**/
+/*th.sorted a, th.sortable a {*/
+    /*background-position: right;*/
+    /*display: block;*/
+    /*width: 100%;*/
+/*}*/
+/**/
+/*th.sortable a {*/
+    /*background-image: url( ../images/arrow_off.png );*/
+/*}*/
+/**/
+/*th.order1 a {*/
+    /*background-image: url( ../images/arrow_down.png );*/
+/*}*/
+/**/
+/*th.order2 a {*/
+    /*background-image: url( ../images/arrow_up.png );*/
+/*}*/
+/**/
+/*tr.odd {*/
+    /*background-color: #fff*/
+/*}*/
+/**/
+/*tr.tableRowEven, tr.even {*/
+    /*background-color: #fea*/
+/*}*/
+
+table.its thead tr {
+    background-color: #69c;
+}
+
+table.its tr.even {
+    background-color: #def;
+}
+
+table.mars thead tr {
+    background-color: #9c9;
+}
+
+table.mars tr.even {
+    background-color: #ccb;
+}
+
+table.mars tr.odd {
+    background-color: #eec;
+}
+
+table.simple thead tr {
+    background-color: #eee;
+}
+
+table.simple tr.even {
+    background-color: #fff;
+}
+
+table.simple {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+}
+
+table.simple td, table.simple th {
+    border: 1px solid #ccc;
+}
+
+table.nocol tbody td, table.nocol tbody th {
+    border-left: none;
+    border-right: none;
+}
+
+table.report td, table.report th {
+    font: menu;
+}
+
+table.report th {
+    background: buttonface;
+    border-width: 1px;
+    border-style: solid;
+    border-color: threedhighlight threedshadow threedshadow threedhighlight;
+    cursor: pointer;
+}
+
+table.report idcol {
+    background: buttonface;
+}
+
+table.report tr.even {
+    background-color: #399;
+}
+
+table.report tbody {
+    height: 100px;
+    overflow: auto;
+}
+
+table.report {
+    height: 120px;
+    overflow: auto;
+}
+
+table.report tbody tr {
+    height: 10px;
+}
+
+table.mark td.tableCellError {
+    background-color: #d00;
+    color: #fff;
+}
+
+table.sublist {
+    margin: 0 0 0 0;
+    width: 100%;
+}
+
+table.sublist td, table.sublist th {
+    width: 50%;
+}
+
+div.exportlinks {
+    background-image: url( ../images/oriz_small.gif );
+    background-repeat: repeat;
+    border: 1px solid #bbb;
+    padding: 2px 2px 2px 2px;
+    margin: 2px 0 0px 0;
+    text-align: left;
+}
+
+span.export {
+    padding: 0 4px 1px 20px;
+    display: inline;
+    cursor: pointer;
+}
+
+span.excel {
+    background-image: url( ../images/ico_file_excel.png );
+    background-repeat: no-repeat;
+    background-position: left;
+}
+
+span.csv {
+    background-image: url( ../images/ico_file_csv.png );
+    background-repeat: no-repeat;
+    background-position: left;
+}
+
+span.xml {
+    background-image: url( ../images/ico_file_xml.png );
+    background-repeat: no-repeat;
+    background-position: left;
+}
+
+span.pdf {
+    background-image: url( ../images/ico_file_pdf.png );
+    background-repeat: no-repeat;
+    background-position: left;
+}
+
+div.pagebanner {
+    border: 0em;
+    padding:0em 0em 1.2em 0em;
+    clear:both;
+    font-size:0.85em;
+}
+
+span.pagebanner {
+    float: left;
+}
+
+span.pagelinks {
+    float: right;
+}
+
+br.pagebanner {
+    clear: both;
+    line-height: 0px;
+    display: block;
+}
+
+/* gestione inner table*/
+td.innerTableClose{
+	padding-top: 0;
+	padding-bottom: 0;
+	
+	
+}
+td.innerTableOpen{
+	
+	padding:1em 1em 1em 5em;
+}
+
+
+td.innerTableOpen table.its thead tr {
+    background-color: #69c;
+}
+
+td.innerTableOpen table.its tr.even {
+    background-color: #def;
+}
+tr.cntTableST{
+	vertical-align: top;
+}
+
+/*FPEDUTO REVCATSSA1*/
+.excelRevcat {
+	background-image: url('../images/ico_file_excel.png');
+	padding:0 4px 1px 20px;
+	background-repeat: no-repeat;
+}

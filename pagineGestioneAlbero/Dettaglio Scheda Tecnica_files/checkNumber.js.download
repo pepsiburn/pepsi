@@ -1,0 +1,458 @@
+// JavaScript Document
+//var indice = 0;
+
+//function handleonkeydownEventForNumber(event) {
+//    if (!event) event = window.event;
+//    var srcElement = getSourceElement(event);
+//    var keyCode = getKeyCode(event);
+//    jslog.debug("srcElement =" + srcElement + ", keyCode=" + keyCode);
+//    jslog.debug("event=" + DWRUtil.toDescriptiveString(event,1,1));
+//
+//    //La tabulazione e' sempre permessa
+//    if (keyCode == "9") {
+//        jslog.debug("exit1");
+//        return true;
+//    }
+//
+//    if (srcElement.getAttribute("stype") != "number" && srcElement.getAttribute("stype") != "currency" && srcElement.getAttribute("stype") != "percentage") {
+//        jslog.debug("exit2");
+//        return true;
+//    }
+//
+//    jslog.debug("readOnly=" + srcElement.getAttribute("readOnly") + ", srcElement.isContentEditable=" + srcElement.isContentEditable);
+//    if (srcElement.getAttribute("readOnly") == "true" || srcElement.isContentEditable == false) {
+//        jslog.debug("exit3");
+//        event.cancelBubble = true;
+//        if (event.stopPropagation) event.stopPropagation();
+//		return false;
+//	}
+//
+//    if (event.shiftKey || event.altKey || event.ctrlKey)
+//    {
+//        jslog.debug("exit4");
+//        event.cancelBubble = true;
+//        return false;
+//    }
+//
+////    if ((keyCode > 95 && keyCode < 106))
+////        keyCode = keyCode - 48;
+//
+//    if (keyCode < 48 &&
+//        keyCode != 8 &&
+//        keyCode != 9 &&
+//        keyCode != 35 &&
+//        keyCode != 36 &&
+//        keyCode != 37 &&
+//        keyCode != 39 &&
+//        keyCode != 46)
+//    {
+//        jslog.debug("exit5");
+//        event.cancelBubble = true;
+//        return false;
+//    }
+//    jslog.debug("formula=");
+//
+//    if ((keyCode > 57 && keyCode < 96) ||
+//        (keyCode > 105 && keyCode < 188 && keyCode != 109) ||
+//        (keyCode > 189))
+//    {
+//        jslog.debug("exit6");
+//        event.cancelBubble = true;
+//        return false;
+//    }
+//
+//    var isDigit = false;
+//    if (keyCode > 47 && keyCode < 58)
+//    {
+//        isDigit = true;
+//        //cancello il contenuto della selezione corrente
+//        var range = new Range(srcElement);
+//        range.setRangeText("");
+//    }
+//
+//    if (srcElement.getAttribute("signed") != "yes" && (keyCode == 189 || keyCode == 109 )) {
+//        event.cancelBubble = true;
+//        return false;
+//    }
+//
+//    if ((srcElement.getAttribute("decimalDigit") < "1" || srcElement.getAttribute("decimalDigit") == null) && keyCode == 188) {
+//        event.cancelBubble = true;
+//        return false;
+//    }
+//
+//    if (keyCode == 188)
+//    {
+//        //la virgola non può andare all'inizio?
+//        if (srcElement.value.length < 1)
+//            return false;
+//
+//        //non è possibile avere 2 volte la virgola
+//        if (srcElement.value.indexOf(',') > 0) {
+//            event.cancelBubble = true;
+//            return false;
+//        }
+//    }
+//
+//    if (keyCode == 189 || keyCode == 109)
+//    {
+//        //il segno può stare solo all'inizio
+//        if (srcElement.value.length > 0) {
+//            event.cancelBubble = true;
+//            return false;
+//        }
+//    }
+//
+//    var numInteri = srcElement.getAttribute("integerDigit");
+//
+//    var posVirgola = srcElement.value.indexOf(',');
+//
+//    var appo = eliminaPunti(srcElement.value);
+//    var lunghezza = appo.length + 1;
+//
+//    if (keyCode == 189 || keyCode == 109) {
+//        indice = 1;
+//    }
+//
+//    if (posVirgola == -1) {
+//        var maxNumInt = parseInt(numInteri) + parseInt(indice);
+//        if ((lunghezza > maxNumInt) && isDigit) {
+//            event.cancelBubble = true;
+//            return false;
+//        }
+//        return true;
+//    }
+//
+//    var numDecimali = srcElement.getAttribute("decimalDigit");
+//    if (numDecimali == null)
+//        numDecimali = 0;
+//
+//    if (((srcElement.value.length - posVirgola) > numDecimali) && isDigit) {
+//        event.cancelBubble = true;
+//        return false;
+//    }
+//
+//    if ((posVirgola > numInteri) && isDigit) {
+//        event.cancelBubble = true;
+//        return false;
+//    }
+//
+//    return true;
+//}
+//
+//
+//function handleonkeydownEventForNumberOld(event) {
+//    if (!event) event = window.event;
+//    var srcElement = getSourceElement(event);
+//    var keyCode = getKeyCode(event);
+//    jslog.debug("srcElement =" + srcElement + ", keyCode=" + keyCode);
+//
+//    //La tabulazione e' sempre permessa
+//    if (keyCode == "9") {
+//        jslog.debug("exit1");
+//        return true;
+//    }
+//
+//    if (srcElement.getAttribute("stype") != "number" && srcElement.getAttribute("stype") != "currency" && srcElement.getAttribute("stype") != "percentage") {
+//        jslog.debug("exit2");
+//        return true;
+//    }
+//
+//    jslog.debug("readOnly=" + srcElement.getAttribute("readOnly") + ", srcElement.isContentEditable=" + srcElement.isContentEditable);
+//    if (srcElement.getAttribute("readOnly") == "true" || srcElement.isContentEditable == false) {
+//        jslog.debug("exit3");
+//        event.cancelBubble = true;
+//        if (event.stopPropagation) event.stopPropagation();
+//        jslog.debug("handleonkeydownEventForNumber start. event=" + DWRUtil.toDescriptiveString(event,1,1));
+//		return false;
+//	}
+//
+//    if (event.shiftKey || event.altKey || event.ctrlKey)
+//    {
+//        jslog.debug("exit4");
+//        event.cancelBubble = true;
+//        return false;
+//    }
+//
+////    if ((keyCode > 95 && keyCode < 106))
+////        keyCode = keyCode - 48;
+//
+//    if (keyCode < 48 &&
+//        keyCode != 8 &&
+//        keyCode != 9 &&
+//        keyCode != 35 &&
+//        keyCode != 36 &&
+//        keyCode != 37 &&
+//        keyCode != 39 &&
+//        keyCode != 46)
+//    {
+//        jslog.debug("exit5");
+//        event.cancelBubble = true;
+//        return false;
+//    }
+//    jslog.debug("formula=");
+//
+//    if ((keyCode > 57 && keyCode < 96) ||
+//        (keyCode > 105 && keyCode < 188 && keyCode != 109) ||
+//        (keyCode > 189))
+//    {
+//        jslog.debug("exit6");
+//        event.cancelBubble = true;
+//        return false;
+//    }
+//
+//    var isDigit = false;
+//    if (keyCode > 47 && keyCode < 58)
+//    {
+//        isDigit = true;
+//        //cancello il contenuto della selezione corrente
+//        var range = new Range(srcElement);
+//        range.setRangeText("");
+//    }
+//
+//    if (srcElement.getAttribute("signed") != "yes" && (keyCode == 189 || keyCode == 109 )) {
+//        event.cancelBubble = true;
+//        return false;
+//    }
+//
+//    if ((srcElement.getAttribute("decimalDigit") < "1" || srcElement.getAttribute("decimalDigit") == null) && keyCode == 188) {
+//        event.cancelBubble = true;
+//        return false;
+//    }
+//
+//    if (keyCode == 188)
+//    {
+//        //la virgola non può andare all'inizio?
+//        if (srcElement.value.length < 1)
+//            return false;
+//
+//        //non è possibile avere 2 volte la virgola
+//        if (srcElement.value.indexOf(',') > 0) {
+//            event.cancelBubble = true;
+//            return false;
+//        }
+//    }
+//
+//    if (keyCode == 189 || keyCode == 109)
+//    {
+//        //il segno può stare solo all'inizio
+//        if (srcElement.value.length > 0) {
+//            event.cancelBubble = true;
+//            return false;
+//        }
+//    }
+//
+//    var numInteri = srcElement.getAttribute("integerDigit");
+//
+//    var posVirgola = srcElement.value.indexOf(',');
+//
+//    var appo = eliminaPunti(srcElement.value);
+//    var lunghezza = appo.length + 1;
+//
+//    if (keyCode == 189 || keyCode == 109) {
+//        indice = 1;
+//    }
+//
+//    if (posVirgola == -1) {
+//        var maxNumInt = parseInt(numInteri) + parseInt(indice);
+//        if ((lunghezza > maxNumInt) && isDigit) {
+//            event.cancelBubble = true;
+//            return false;
+//        }
+//        return true;
+//    }
+//
+//    var numDecimali = srcElement.getAttribute("decimalDigit");
+//    if (numDecimali == null)
+//        numDecimali = 0;
+//
+//    if (((srcElement.value.length - posVirgola) > numDecimali) && isDigit) {
+//        event.cancelBubble = true;
+//        return false;
+//    }
+//
+//    if ((posVirgola > numInteri) && isDigit) {
+//        event.cancelBubble = true;
+//        return false;
+//    }
+//
+//    return true;
+//}
+
+
+//function handleonfocusEventForNumber(event) {
+//    if (!event) event = window.event;
+//    var srcElement = getSourceElement(event);
+//    jslog.debug("handleonfocusEventForNumber:" + srcElement.name);
+//
+//    if (srcElement.getAttribute("stype") != "number" && srcElement.getAttribute("stype") != "currency" && srcElement.getAttribute("stype") != "percentage") {
+//        return true;
+//    }
+//
+//    if (srcElement.getAttribute("grouping") != "no") {
+//        if (srcElement.value != "") {
+//            value = Format(srcElement.value);
+//            if (isNaN(value)) {
+//                return true;
+//            }
+//            srcElement.value = value;
+//            if (srcElement.getAttribute("decimalDigit") != "0") {
+//                var indexVirgola = srcElement.value.indexOf(',');
+//                var lenDigit = 0;
+//                var commaString = ",";
+//                if (indexVirgola != -1) {
+//                    lenDigit = srcElement.value.length - indexVirgola - 1;
+//                    commaString = "";
+//                }
+//                srcElement.value = srcElement.value + commaString + "0000000000".substring(0, srcElement.getAttribute("decimalDigit") - lenDigit);
+//            }
+//        }
+//    }
+//
+//    var range = new Range(srcElement);
+//    range.moveStart("character", -100);
+//    range.moveEnd("character", 100);
+//    range.select();
+//
+//    return true;
+//}
+
+
+function handleonblurEventForNumber(event) {
+    if (!event) event = window.event;
+    var srcElement = getSourceElement(event);
+
+    if (srcElement.getAttribute("stype") != "number" && srcElement.getAttribute("stype") != "currency" && srcElement.getAttribute("stype") != "percentage") {
+        return true;
+    }
+    if (srcElement.value != "") {
+        var formatter = new NumberFormat();
+        formatter.setInputDecimal(GLOBAL_NUMBER_DECIMAL_SEPARATOR);
+        formatter.setNumber(srcElement.value);
+        formatter.setPlaces(srcElement.getAttribute("decimalDigit"));
+        formatter.setCurrency(false);
+        formatter.setNegativeFormat((srcElement.getAttribute("signed") == "yes") ? formatter.LEFT_DASH : formatter.NONE);
+        formatter.setSeparators((srcElement.getAttribute("grouping") == "yes"), GLOBAL_NUMBER_GROUP_SEPARATOR, GLOBAL_NUMBER_DECIMAL_SEPARATOR);
+        srcElement.value = formatter.toFormatted();
+    }
+}
+
+function checkNumber(srcElement, stype, integerDigit, decimalDigit, signed, grouping) {
+
+    if (stype != "number" && stype != "currency" && stype != "percentage") {
+        return true;
+    }
+    if (srcElement.value != "") {
+        var formatter = new NumberFormat();
+        formatter.setInputDecimal(GLOBAL_NUMBER_DECIMAL_SEPARATOR);
+        formatter.setNumber(srcElement.value);
+        formatter.setPlaces(decimalDigit);
+        formatter.setCurrency(false);
+        formatter.setNegativeFormat((signed == "yes") ? formatter.LEFT_DASH : formatter.NONE);
+        formatter.setSeparators((grouping == "yes"), GLOBAL_NUMBER_GROUP_SEPARATOR, GLOBAL_NUMBER_DECIMAL_SEPARATOR);
+        srcElement.value = formatter.toFormatted();
+    }
+}
+
+//function handlemouseEventForNumber(event) {
+//    if (!event) event = window.event;
+//    var srcElement = getSourceElement(event);
+//
+//    if (srcElement.getAttribute("stype") != "number") {
+//        return true;
+//    }
+//
+//    event.cancelBubble = true;
+//    event.returnValue = false;
+//    return false;
+//}
+
+function normalizeNumber(inputNumber) {
+    var workNumber = inputNumber.replace(new RegExp( "\\" + GLOBAL_NUMBER_GROUP_SEPARATOR, "g" ), "");
+    workNumber = workNumber.replace(new RegExp( "\\" + GLOBAL_NUMBER_DECIMAL_SEPARATOR, "g" ), ".");
+    return workNumber;
+}
+
+//Converte la virgola in punto
+//function convertiVirgola(stringa) {
+//    stringa = eliminaPunti(stringa);
+//    for (i = 0; i < (stringa.length); i++) {
+//        if (stringa.charAt(i) == ',') {
+//            stringa = stringa.substring(0, i) + "." + stringa.substring(i + 1, stringa.length);
+//        }
+//    }
+//
+//    return stringa;
+//}
+
+//Converte il punto in virgola
+//function convertiPunto(stringa) {
+//    for (i = 0; i < (stringa.length); i++) {
+//        if (stringa.charAt(i) == '.') {
+//            stringa = stringa.substring(0, i) + "," + stringa.substring(i + 1, stringa.length);
+//        }
+//    }
+//    return stringa;
+//}
+
+//Elimina i punti
+//function eliminaPunti(stringa) {
+//    for (i = 0; i < (stringa.length); i++) {
+//        if (stringa.charAt(i) == '.') {
+//            stringa = stringa.substring(0, i) + stringa.substring(i + 1, stringa.length);
+//        }
+//    }
+//    return stringa;
+//}
+
+
+//function Format(fl_val) {
+//    var valFormattato = fl_val.indexOf('.')
+//    if (valFormattato != -1) {
+//        fl_val = eliminaPunti(fl_val);
+//    }
+//    var signedPresente = fl_val.indexOf('-');
+//    //è presente il segno meno
+//    var segnoPresente = false;
+//    if (signedPresente != -1) {
+//        segnoPresente = true;
+//        fl_val = fl_val.substring(1, fl_val.length);
+//    }
+//
+//
+//    if (fl_val.length != 0) {
+//        //tronca la parte decimale a due cifre
+//        var appo = fl_val;
+//        var trovato = false;
+//        for (var i = 0; i < fl_val.length; i++) {
+//            if (fl_val.charAt(i) == ',') {
+//                var chiave = new Array();
+//                chiave = fl_val.split(",");
+//                appo = chiave[0];
+//                var dec = chiave[1];
+//                trovato = true;
+//            }
+//        }
+//        var j = 1;
+//        appo = new Number(appo);
+//        appo = appo.toString();
+//        for (k = (appo.length); k > 1; k--) {
+//            if (j == 3) {
+//                appo = appo.substring(0, k - 1) + "." + appo.substring(k - 1, appo.length);
+//                j = 1;
+//            } else
+//                j++;
+//        }
+//        if (trovato == true) {
+//            fl_val = appo + "," + dec;
+//        } else {
+//            fl_val = appo;
+//        }
+//
+//        if (segnoPresente) {
+//            fl_val = "-" + fl_val;
+//        }
+//    }
+//
+//    return fl_val;
+//
+//}

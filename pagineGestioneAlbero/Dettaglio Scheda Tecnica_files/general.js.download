@@ -1,0 +1,821 @@
+function stopRKey(evt) {
+      var evt  = (evt) ? evt : ((event) ? event : null);
+      var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
+     var useDefault = true;
+    if (evt.keyCode == 13) { 
+           var tags = document.getElementsByTagName("input");
+           for(i=0;i<tags.length;i++) {
+                 currentTag = tags[i];
+                 if(currentTag.type == "submit" && currentTag.tabIndex == 99) {
+                        currentTag.click();
+                        useDefault = false;
+                       break;
+                 }
+           }
+     }
+      return useDefault;
+}
+
+document.onkeypress = stopRKey;
+
+
+function getSourceElement(event) {
+    if (event.srcElement) return event.srcElement;
+    if (event.target) return event.target;
+    return null;
+}
+
+function getKeyCode(event) {
+    if (event.keyCode) return event.keyCode;
+    if (event.which) return event.which;
+    return null;
+}
+
+//var curHeight = 0;
+//var curWidth = 0;
+//
+//function adattaDivDiPagina() { //reloads the window if Nav4 resized
+//    if (document.body.clientHeight != curHeight)
+//    {
+//        curHeight = document.body.clientHeight;
+//
+//        //Imposto l'altezza del DIV dei messaggi coerentemente con il contenuto
+//        var messageDiv = document.getElementById("message");
+//        if (messageDiv.innerText == "") {
+//            messageDiv.style.height = "1px";
+//        }
+//
+//        //---------------------------------------------------------------------------
+//        //Altezza totale della pagina.
+//        var altezzaTotale = document.body.clientHeight;
+//
+//        //Calcola l'altezza del frame superiore.
+//        var topFrame = 0;
+//        if (document.getElementById("topFrame")) {
+//            topFrame = document.getElementById("topFrame").clientHeight;
+//        }
+//
+//        //Calcola l'altezza del frame superiore.
+//        var bottomFrame = 0;
+//        if (document.getElementById("bottomFrame")) {
+//            bottomFrame = document.getElementById("bottomFrame").clientHeight;
+//        }
+//
+//        if (document.getElementById("ButtonBar")) {
+//            var altezzaPulsanti = document.getElementById("ButtonBar").clientHeight;
+//            var offsetAggiustamento = 0;
+//        }
+//        else {
+//            var altezzaPulsanti = 0;
+//            var offsetAggiustamento = 0;
+//        }
+//        if (document.getElementById("MenuBar")) {
+//            var altezzaMenu = document.getElementById("MenuBar").clientHeight;
+//        }
+//        else {
+//            var altezzaMenu = 0;
+//        }
+//
+//        if (document.getElementById("toptabs")) {
+//            var altezzaTab = document.getElementById("toptabs").clientHeight;
+//            if (altezzaTab == 0)
+//                altezzaTab = 35;
+//        }
+//        else {
+//            var altezzaTab = 0;
+//        }
+//
+//        var altezzaMessaggio = document.getElementById("message").clientHeight;
+//
+//        //mainDiv, ovvero il div del quale calcolare altezza e larghezza...
+//        var mainDiv = document.getElementById("mainDiv");
+//        mainDiv.style.top = altezzaMenu + altezzaPulsanti + altezzaTab + topFrame;
+//
+//        var altezzaMain = altezzaTotale - topFrame - altezzaMenu - altezzaPulsanti - altezzaTab - altezzaMessaggio - bottomFrame;
+//        if (altezzaMain < 1)
+//            altezzaMain = 1;
+//        mainDiv.style.height = altezzaMain;
+//
+//        //calculate main TD element.
+//        var mainBody = document.getElementById("MainBody");
+//        mainBody.style.height = altezzaMain + altezzaTab - 3;
+//    }
+//    if (document.body.clientWidth != curWidth)
+//    {
+//        //Calcola l'altezza del frame superiore.
+//        var leftFrame = 0;
+//        if (document.getElementById("leftFrame")) {
+//            leftFrame = document.getElementById("leftFrame").clientWidth;
+//        }
+//
+//        //Calcola l'altezza del frame superiore.
+//        var rigthFrame = 0;
+//        if (document.getElementById("rigthFrame")) {
+//            rigthFrame = document.getElementById("rigthFrame").clientWidth;
+//        }
+//
+//        var mainDiv = document.getElementById("mainDiv");
+//        curWidth = document.body.clientWidth;
+//        var largMain = document.body.clientWidth - leftFrame - rigthFrame - 2;
+//        if (largMain < 1)
+//            largMain = 1;
+//        mainDiv.style.left = leftFrame + 1;
+//        mainDiv.style.width = largMain;
+//    }
+//    CenterHomePageLayer();
+//}
+//
+//function CenterHomePageLayer() {
+//    var layerHomePage = document.getElementById("LayerHomePage");
+//    if (layerHomePage) {
+//        var left = (document.body.clientWidth - layerHomePage.offsetWidth) / 2;
+//        var top = (document.body.clientHeight - layerHomePage.offsetHeight) / 2 - 50;
+//        if (left < 0)
+//            left = 0;
+//        if (top < 0)
+//            top = 0;
+//        layerHomePage.style.left = left;
+//        layerHomePage.style.top = top;
+//        curWidth = document.body.clientWidth;
+//        curHeight = document.body.clientHeight;
+//    }
+//}
+
+function switchFrameLayout(idFrame) {
+    var frameDiv = document.getElementById('IFB' + idFrame);
+    var immagine = document.getElementById('IFTI' + idFrame);
+    if (frameDiv) {
+        if (frameDiv.className == "layerFrameBodyCollapsed") {
+            frameDiv.className = "layerFrameBody";
+            if (immagine.src) {
+                immagine.src = "images/adfgen_frame_riduci.gif";
+            } else {
+                immagine.className = "trottle expanded";
+            }
+        }
+        else {
+            frameDiv.className = "layerFrameBodyCollapsed";
+            if (immagine.src) {
+                immagine.src = "images/adfgen_frame_espandi.gif";
+            } else {
+                immagine.className = "trottle collapsed";
+            }
+        }
+    }
+}
+
+function switchFrameLayoutNoTrottleButton(idFrame) {
+    var frameDiv = document.getElementById('IFB' + idFrame);
+    if (frameDiv) {
+        if (frameDiv.className == "layerFrameBodyCollapsed") {
+            frameDiv.className = "layerFrameBody";
+        }
+        else {
+            frameDiv.className = "layerFrameBodyCollapsed";
+        }
+    }
+}
+
+
+var currentPopupDialogArg;
+function openSubModalDialog(popupDialogArg, width, height, retFunc)
+{
+    //document.title = popupDialogArg.title;
+    //Durante la composizione dell'URL verifica che i parametri siano valorizzati
+    var tempSrc = popupDialogArg.url ;
+    if( popupDialogArg.parameter != null){
+        var separatorParam = "?" ;
+        if( tempSrc.indexOf('?') > 0 )
+            separatorParam = "&" ;
+        tempSrc = tempSrc + separatorParam + popupDialogArg.parameter;
+    }
+    currentPopupDialogArg = popupDialogArg;
+    showPopWin(tempSrc, width, height, retFunc, popupDialogArg.title);
+}
+
+
+function openDialogModal(pTitolo, url)
+{
+    var w = 800  ;
+    var h = 600  ;
+    if (window.screen) {
+        w = window.screen.availWidth;
+        h = window.screen.availHeight;
+    }
+
+    var titolo = pTitolo ;
+
+    var features = "dialogHeight:" + h + ";dialogWidth:" + w + ";edge:Raised;scrollbars:no;center:Yes;help:No;resizable:Yes;status:Yes;maximize:Yes;minimize:Yes";
+    var src = url;
+    var results = window.showModalDialog(src, self, features);
+}
+
+
+function openWindow(href, w, h) {
+    if (w == 0) w = 640;
+    if (h == 0) h = 480;
+    var ritorno = showModalDialog(href, ritorno, "dialogWidth:" + w + "px; dialogHeight:" + h + "px; status:no; center:yes");
+    if (ritorno != undefined) {
+        window.dateField.value = ritorno;
+    }
+    return false;
+}
+
+function calendar(campo) {
+    window.dateField = campo;
+    var href = "calendar.jsp?dataInput='" + campo.value + "'";
+    var h = 270 / 1;
+    var w = 250 / 1;
+    openWindow(href, w, h);
+}
+
+function isBlank(val) {
+    if (val == null) {
+        return true;
+    }
+    for (var i = 0; i < val.length; i++) {
+        if ((val.charAt(i) != ' ') && (val.charAt(i) != "\t") && (val.charAt(i) != "\n") && (val.charAt(i) != "\r")) {
+            return false;
+        }
+    }
+    return true;
+}
+
+//***********************************************************************************
+// La seguente funzione restituisce l'indice del radio button selezionato;
+// La funzione torna -1 se non ci sono elementi selezionati oppure se non esiste una
+// lista di radio ma solo uno. In tal caso l'accesso al value del radio deve essere diverso
+//***********************************************************************************
+function getIndexRadioChecked(radio)
+{
+    var radioSel = -1;
+    for (i = 0; i < radio.length; i++)
+    {
+        if (radio[i].checked)
+        {
+            radioSel = i;
+            break;
+        }
+    }
+
+    return radioSel;
+}
+
+function isValidDate(day, month, year) {
+    if (month < 1 || month > 12) {
+        return false;
+    }
+    if (day < 1 || day > 31) {
+        return false;
+    }
+    if ((month == 4 || month == 6 || month == 9 || month == 11) && (day == 31)) {
+        return false;
+    }
+    if (month == 2) {
+        var leap = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
+        if (day > 29 || (day == 29 && !leap)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+
+//ritorna una data nel formato dd/mm/aaaaa
+
+function getNowDate()
+{
+    var now = new Date();
+    var day = now.getDate();
+    var month = now.getMonth();
+    var year = now.getYear();
+    //year += 1900;
+    month += 1;
+    if (day < 10) {
+        day = "0" + day;
+    }
+    if (month < 10) {
+        month = "0" + month;
+    }
+    strNow = day + "/" + month + "/" + year;
+    return strNow;
+}
+
+// confronto tra due date
+// torna 1 se la data1 > data2
+// torna 0 se la data1 < data2
+// torna 2 se le date sono uguali;
+function CheckDate(strDate1, strDate2)
+{
+
+    strDate1 = strDate1.substring(6, 10) + "/" + strDate1.substring(3, 5) + "/" + strDate1.substring(0, 2);
+    strDate2 = strDate2.substring(6, 10) + "/" + strDate2.substring(3, 5) + "/" + strDate2.substring(0, 2);
+
+    var gData1 = Date.parse(strDate1);
+    var gData2 = Date.parse(strDate2);
+
+    if (gData1 > gData2)
+    {
+        return 1;
+    }
+    if (gData1 < gData2)
+    {
+        return 0;
+    }
+    else
+    {
+        return 2;
+    }
+}
+
+
+//Get a value from a form name, if property is a checkbox, then return
+//true or false depending on selected option.
+function getReportValue(itemName) {
+    var item = document.getElementById(itemName);
+    if (item.type == "checkbox") {
+        return item.checked;
+    }
+    return escape(item.value);
+}
+
+
+//Synchronize adfgen:checkbox taglib html objects: type=checkbox with related hidden field
+function checkBoxSync(element, uncheckedValue) {
+    var hName = element.id.substring(0, element.id.length - 9);
+    var elHName = document.getElementById(hName);
+    if (element.checked) {
+        elHName.value = element.value;
+    } else {
+    	if (uncheckedValue) {
+	        elHName.value = uncheckedValue;
+    	} else {
+	        elHName.value = "";
+    	}
+    }
+    return true;
+}
+
+//function goToFunction(urlLocation) {
+//    if (urlLocation.indexOf('?') == -1) {
+//        urlLocation = urlLocation + "?adfgenResetSession=true";
+//    } else {
+//        urlLocation = urlLocation + "&adfgenResetSession=true";
+//    }
+//
+//    location.href = urlLocation;
+//    checkMenu = false;
+//}
+
+//Submit current form without perform struts validations
+//function submitFormNoValidation(url) {
+//    bCancel = 1;
+//    submitForm(url);
+//}
+
+//Submit current form depending on the result of onsubmit form action
+//function submitForm(url) {
+//    //If 6578706f7274=1 was found in url string then an export command was executed.
+//    //in this case no submit is requested.
+//    if (url.indexOf("6578706f7274=1") != -1) {
+//        document.location = url;
+//    } else {
+//        var onSubmitResult = true;
+//        if (document.forms[0].onsubmit) {
+//            onSubmitResult = document.forms[0].onsubmit();
+//        }
+//        if (onSubmitResult) {
+//            var appoURL = document.forms[0].action;
+//            document.forms[0].action = url;
+//            document.forms[0].submit();
+//            document.forms[0].action = appoURL;
+//        }
+//    }
+//}
+
+//Manage selection of a window popup row
+//function selectPopupRow(elm) {
+//    elm.className = elm.selClass;
+//}
+
+//Manage de-selection of a window popup row
+//function deselectPopupRow(elm) {
+//    elm.className = elm.baseClass;
+//}
+
+function AddLoadEvent(func) {
+    var oldonload = window.onload;
+    if (typeof window.onload != 'function') {
+        window.onload = func;
+    } else {
+        window.onload = function() {
+            oldonload();
+            func();
+        }
+    }
+}
+
+function AddResizeEvent(func) {
+    var oldonresize = window.onresize;
+    if (typeof window.onresize != 'function') {
+        window.onresize = func;
+    } else {
+        window.onresize = function() {
+            oldonresize();
+            func();
+        }
+    }
+}
+
+function addOnKeyDownEvent(func) {
+    var oldonkeydown = document.onkeydown;
+    if (typeof document.onkeydown != 'function') {
+        document.onkeydown = func;
+    } else {
+        document.onkeydown = function() {
+            oldonkeydown();
+            func();
+        }
+    }
+}
+
+function Range(element) {
+    this.element = element;
+    this.ieRange;
+}
+
+Range.prototype.getIERange = function () {
+    if (this.element.createTextRange && !this.ieRange) {
+        this.ieRange = document.selection.createRange();
+    }
+    return this.ieRange;
+};
+
+Range.prototype.getRangeText = function () {
+    if (this.element.createTextRange) {
+        var text = this.getIERange().text;
+        return text;
+    } else if (this.element.setSelectionRange) {
+        var range = this.element.value.substring(this.element.selectionStart, this.element.selectionEnd);
+        return range;
+    }
+};
+
+Range.prototype.setRangeText = function (rangeText) {
+    if (this.element.createTextRange) {
+        var range = this.getIERange();
+        range.text = rangeText;
+    } else if (this.element.setSelectionRange) {
+        var leftPart = this.element.value.substring(0, this.element.selectionStart);
+        var rightPart = this.element.value.substring(this.element.selectionEnd);
+        var newValue = leftPart + rangeText + rightPart;
+        var appoSelectionEnd = this.element.selectionEnd;
+        this.element.value = newValue;
+        this.element.setSelectionRange(appoSelectionEnd, appoSelectionEnd);
+    }
+};
+
+Range.prototype.moveStart = function (type, amount) {
+    if (this.element.createTextRange) {
+        var range = this.getIERange();
+        range.moveStart(type, amount);
+    } else if (this.element.setSelectionRange) {
+        this.element.setSelectionRange(this.element.selectionStart + amount, this.element.selectionEnd);
+    }
+};
+
+Range.prototype.moveEnd = function (type, amount) {
+    if (this.element.createTextRange) {
+        var range = this.getIERange();
+        range.moveEnd(type, amount);
+    } else if (this.element.setSelectionRange) {
+        this.element.setSelectionRange(this.element.selectionStart, this.element.selectionEnd + amount);
+    }
+};
+
+Range.prototype.move = function (type, amount) {
+    if (this.element.createTextRange) {
+        var range = this.getIERange();
+        range.move(type, amount);
+    } else if (this.element.setSelectionRange) {
+        this.element.setSelectionRange(this.element.selectionStart + amount, this.element.selectionEnd + amount);
+    }
+};
+
+Range.prototype.select = function () {
+    if (this.element.createTextRange) {
+        var range = this.getIERange();
+        range.select();
+    }
+};
+
+//document.onkeypress = handleonkeydownEvent;
+//addOnKeyDownEvent(handleonkeydownEvent);
+////document.oncontextmenu = handlemouseEvent;
+////document.onmouseup = handlemouseEvent;
+////document.onclick = handlemouseEvent;
+////document.ondblclick = handlemouseEvent;
+////document.onfocus = handleonfocusEvent;
+////document.onblur = handleonblurEvent;
+
+AddLoadEvent(initJScriptPage);
+AddLoadEvent(addWaitPopupOnAllLinks);
+
+//function handleonkeydownEvent(event) {
+//    if (!event) event = window.event;
+//    var srcElement = getSourceElement(event);
+//    if (!srcElement.getAttribute) {                           p
+//        return true;
+//    }
+//
+//    if (srcElement.getAttribute("stype") == "date") {
+//        return handleonkeydownEventForDate(event);
+//    }
+//
+//    if (srcElement.getAttribute("stype") == "number" || srcElement.getAttribute("stype") == "currency" || srcElement.getAttribute("stype") == "percentage") {
+//        return handleonkeydownEventForNumber(event);
+//    }
+//
+//
+//    if (srcElement.getAttribute("stype") == "time") {
+//        return handleonkeydownEventForTime(event);
+//    }
+//
+//    return true;
+//}
+
+//function handlemouseEvent(event) {
+//    if (!event) event = window.event;
+//    var srcElement = getSourceElement(event);
+//    if (!srcElement.getAttribute) {
+//        return true;
+//    }
+//
+//    if (srcElement.getAttribute("stype") == "date") {
+//        return handlemouseEventForDate(event);
+//    }
+//
+//    if (srcElement.getAttribute("stype") == "number" || srcElement.getAttribute("stype") == "currency" || srcElement.getAttribute("stype") == "percentage") {
+//        return handlemouseEventForNumber(event);
+//    }
+//
+//    if (srcElement.getAttribute("stype") == "time") {
+//        return handlemouseEventForTime(event);
+//    }
+//
+//    return true;
+//}
+//
+//function handleonfocusEvent(event) {
+//    if (!event) event = window.event;
+//    var srcElement = getSourceElement(event);
+//    if (!srcElement.getAttribute) {
+//        return true;
+//    }
+//
+//    if (srcElement.getAttribute("stype") == "date") {
+//        return handleonfocusEventForDate(event);
+//    }
+//
+//    if (srcElement.getAttribute("stype") == "number" || srcElement.getAttribute("stype") == "currency" || srcElement.getAttribute("stype") == "percentage") {
+//        return handleonfocusEventForNumber(event);
+//    }
+//
+//    if (srcElement.getAttribute("stype") == "time") {
+//        return handleonfocusEventForTime(event);
+//    }
+//
+//
+//    return true;
+//}
+
+function handleonblurEvent(event) {
+    if (!event) event = window.event;
+    var srcElement = getSourceElement(event);
+    if (!srcElement.getAttribute) {
+        return true;
+    }
+
+    if (srcElement.getAttribute("stype") == "date") {
+        return handleonblurEventForDate(event);
+    }
+
+    if (srcElement.getAttribute("stype") == "number" || srcElement.getAttribute("stype") == "currency" || srcElement.getAttribute("stype") == "percentage") {
+        return handleonblurEventForNumber(event);
+    }
+
+    if (srcElement.getAttribute("stype") == "time") {
+        return handleonblurEventForTime(event);
+    }
+
+
+    return true;
+}
+
+function initFormField(property, sType, signed, decimalDigit, integerDigit, grouping) {
+    var field = document.getElementById(property);
+    if (field) {
+        field.setAttribute("stype", sType);
+        if (signed) {
+            field.setAttribute("signed", signed);
+        }
+        if (decimalDigit) {
+            field.setAttribute("decimalDigit", decimalDigit);
+        }
+        if (integerDigit) {
+            field.setAttribute("integerDigit", integerDigit);
+        }
+        if (grouping) {
+            field.setAttribute("grouping", grouping);
+        }
+        if (signed) {
+            field.setAttribute("signed", signed);
+        }
+        if (sType == "number" || sType == "currency" || sType == "percentage") {
+            if (field.setEvent) {
+                field.setEvent("onblur", handleonblurEventForNumber);
+                //field.setEvent("onfocus", handleonfocusEventForNumber);
+            } else {
+                field.onblur = handleonblurEventForNumber;
+                //field.onfocus = handleonfocusEventForNumber;
+            }
+        }
+        if (sType == "date") {
+            var datePickerContainer = document.getElementById(property + "_dp");
+            if (datePickerContainer) {
+                datePickerContainer.innerHTML = '<a class="popupCalendar" href="#" onclick="return showCalendar(' + singleQuote + property + singleQuote + ', ' + singleQuote + '%d/%m/%Y' + singleQuote + ');" title="' + datePickerContainer.getAttribute("title") + '">&nbsp;</a>';
+            }
+            if (field.value == "") {
+                field.value = DATE_FIELD_DEFAULT_VALUE;
+            }
+        }
+    }
+}
+
+function initInternalFrameField(property, href, name, title, className) {
+    var field = document.getElementById(property + "_c");
+    if (field) {
+        var innerHTML = '|&nbsp;<a id="' + property + '" ';
+        if (className) {
+            innerHTML = innerHTML + 'class="' + className + '" ';
+        }
+        if (href) {
+            innerHTML = innerHTML + 'href="' + href + '" ';
+        }
+        if (title) {
+            innerHTML = innerHTML + 'title="' + title + '"';
+        }
+        innerHTML = innerHTML + '>';
+        if (name) {
+            innerHTML = innerHTML + name;
+        }
+        innerHTML = innerHTML + '</a>&nbsp;';
+
+        field.innerHTML = innerHTML;
+    }
+}
+
+function initJScriptPage() {
+    //Add attribute name to the form.
+    //Struts use name instead of id attribute also when xhtml strict is requested (see tag <xhtml>),
+    //but name attribute is invalid in xhtml strict 1.0.
+    //Therefore struts require name attribute for client side validation.
+    if (document.forms[0]) {
+        var form = document.forms[0];
+        if (!form.getAttribute("name") && form.getAttribute("id")) {
+            form.setAttribute("name", form.getAttribute("id"));
+        }
+    }
+
+    setupMouseEventsOnMenuForIE();
+}
+
+function setupMouseEventsOnMenuForIE(event) {
+    var brsVersion = parseInt(window.navigator.appVersion.charAt(0), 10);
+    if (brsVersion <= 6 && window.navigator.userAgent.indexOf("MSIE") > -1) {
+        var topMenu = document.getElementById("css_main");
+        if (topMenu) {
+            if (topMenu.setEvent) {
+                topMenu.setEvent("onmouseover", hideSelectBoxes);
+                topMenu.setEvent("onmouseout", displaySelectBoxes);
+            } else {
+                topMenu.onmouseover = hideSelectBoxes;
+                topMenu.onmouseout = displaySelectBoxes;
+            }
+
+        }
+    }
+}
+
+// Add onclick handlers to 'a' elements excluding of class noWaitPopup,
+//for automatic wait poup div.
+function addWaitPopupOnAllLinks() {
+    var elms = document.getElementsByTagName('a');
+    for (i = 0; i < elms.length; i++) {
+        //jslog.debug("Processing element: " + i + ". className=" + elms[i].className + ". href=" + elms[i].href + ". onclick=" + elms[i].onclick);
+        if (elms[i].className.indexOf("noWaitPopup") == -1 && elms[i].onclick == null) {
+            //href with 6578706f7274=1 means that are export links of display tag library.
+            if (elms[i].href != undefined && elms[i].href.indexOf("javascript:") == -1 && elms[i].href.indexOf("#") == -1 && elms[i].href.indexOf("6578706f7274=1") == -1) {
+                elms[i].onclick = function() {
+				    showWaitPopup(true);
+                    return true;
+			    }
+            }
+        }
+    }
+}
+
+function focusForPopup() {
+	if (document.getElementsByTagName("a")[2]) {
+	    document.getElementsByTagName("a")[2].focus(); //in case of IE focus on first active link (No Selection by default).
+	}
+	if (document.getElementsByTagName("a")[1]) {
+	    document.getElementsByTagName("a")[1].focus(); //this focus don't work for IE
+	}
+}
+
+function clearFiltersStandard() { 
+
+	var searchCriteriaDiv = document.getElementById("IFBSearch");
+	var myInputArray = searchCriteriaDiv.getElementsByTagName("INPUT");
+	for (var i=0; i<myInputArray.length; i++) {
+		if (myInputArray[i].type == 'text') {
+			if (myInputArray[i].className.indexOf("date") > -1) {
+				myInputArray[i].value = DATE_FIELD_DEFAULT_VALUE;
+			} else {
+				myInputArray[i].value = "";
+			}
+		}
+		
+		if (myInputArray[i].type == 'checkbox') {
+			myInputArray[i].checked = false;
+		}
+	}
+	var myInputArray = searchCriteriaDiv.getElementsByTagName("TEXTAREA");
+	for (var i=0; i<myInputArray.length; i++) {
+		myInputArray[i].value = "";
+	}
+	var myInputArray = searchCriteriaDiv.getElementsByTagName("SELECT");
+	for (var i=0; i<myInputArray.length; i++) {
+		myInputArray[i].options[0].selected = "true";
+	}
+
+	return;
+}
+
+function getElementByName(varName) {
+	return document.getElementsByName(varName)[0];
+}
+
+function openFrameLayout(idFrame) {
+    var frameDiv = document.getElementById('IFB' + idFrame);
+    var immagine = document.getElementById('IFTI' + idFrame);
+    if (frameDiv) {
+        if (frameDiv.className == "layerFrameBodyCollapsed") {
+            frameDiv.className = "layerFrameBody";
+            if (immagine.src) {
+                immagine.src = "images/adfgen_frame_riduci.gif";
+            } else {
+                immagine.className = "trottle expanded";
+            }
+        }
+/*        else {
+            frameDiv.className = "layerFrameBodyCollapsed";
+            if (immagine.src) {
+                immagine.src = "images/adfgen_frame_espandi.gif";
+            } else {
+                immagine.className = "trottle collapsed";
+            }
+        }*/
+    }
+}
+
+function clearFilterId(id) { 
+
+	var searchCriteriaDiv = document.getElementById(id);
+	var myInputArray = searchCriteriaDiv.getElementsByTagName("INPUT");
+	for (var i=0; i<myInputArray.length; i++) {
+		if (myInputArray[i].type == 'text') {
+			if (myInputArray[i].className.indexOf("date") > -1) {
+				myInputArray[i].value = DATE_FIELD_DEFAULT_VALUE;
+			} else {
+				myInputArray[i].value = "";
+			}
+		}
+		
+		if (myInputArray[i].type == 'checkbox') {
+			myInputArray[i].checked = false;
+		}
+	}
+	var myInputArray = searchCriteriaDiv.getElementsByTagName("TEXTAREA");
+	for (var i=0; i<myInputArray.length; i++) {
+		myInputArray[i].value = "";
+	}
+	var myInputArray = searchCriteriaDiv.getElementsByTagName("SELECT");
+	for (var i=0; i<myInputArray.length; i++) {
+		myInputArray[i].options[0].selected = "true";
+	}
+}
+
+//fine
+//-->

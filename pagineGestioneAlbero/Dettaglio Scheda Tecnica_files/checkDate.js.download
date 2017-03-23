@@ -1,0 +1,178 @@
+//Da disasteriscare durante il passaggio in esercizio.
+function handleonkeydownEventForDate(event){
+    if (!event) event = window.event;
+
+	var sep = "/";
+    var srcElement = getSourceElement(event);
+
+    if (srcElement.getAttribute("readOnly") == "true" || srcElement.isContentEditable == false) {
+		return false; 
+	}
+
+	if (srcElement.getAttribute("stype") != "date") {
+		return true; 
+	}
+
+    var keyCode = getKeyCode(event);
+	if ((keyCode > 95 && keyCode < 106))
+		keyCode = keyCode - 48;
+
+	if (keyCode > 57) {
+		return false; 
+	}
+	if (keyCode <  48 &&
+		keyCode != 8  &&
+		keyCode != 9  &&
+		keyCode != 13 &&
+		keyCode != 32 &&
+		keyCode != 35 &&
+		keyCode != 36 &&
+		keyCode != 37 &&
+		keyCode != 39 &&
+		keyCode != 46)
+	{ 
+		return false; 
+	}
+
+	if (event.shiftKey || event.altKey || event.ctrlKey)
+	{ 
+		return false; 
+	}
+
+    var range =  new Range(srcElement);
+    //var range =  document.selection.createRange();
+
+    //if the selection text is greater than one char, reduce the selection to the first char only
+    if (range.getRangeText().length > 1)  {
+		var range2 =  range.getRangeText().length - 1;
+		range.moveEnd("character", -range2);
+	}
+
+    //if no selection exist, select only the first char at caret
+	if (range.getRangeText().length == 0 && keyCode != 8)
+		range.moveEnd("character", 1);
+
+    //if selection is on the date sep, move the selection to the next char
+	if (range.getRangeText() == sep) {
+		range.moveStart("character", 1);
+		range.moveEnd("character", 1);
+	}	
+
+    //if the keycode is space or DEL, write an underscore and move selection to the next char
+	if (keyCode == 32 || keyCode == 46) {
+		range.setRangeText("_");
+		//range.getRangeText() = "_";
+
+		range.moveEnd("character", 1);
+        //if selection is on the date sep, move the selection to the next char
+		if (range.getRangeText() == sep) {
+			range.moveEnd("character", 1);
+			range.moveStart("character", 1);
+		}
+		if (range.getRangeText().length == 0)
+			range.moveStart("character", -1);
+
+		range.select();
+		return false;
+	}		
+
+    //backspace management
+    if (keyCode == 8) {
+		if (range.getRangeText().length == 0) {
+			range.moveStart("character", -1);
+		}
+        range.setRangeText("_");
+//		range.text = "_";
+		range.moveStart("character", -2); //was -2
+		range.moveEnd("character", -1); //was -1
+		if (range.getRangeText() == sep) {
+			range.moveEnd("character", -1);
+			range.moveStart("character", -1);
+		}
+		range.select();
+		return false;
+	}		
+
+    //digit management
+    if ((keyCode > 47 && keyCode < 58)) {
+		//var range =  document.selection.createRange();
+		if (range.getRangeText().length == 0)
+			range.moveEnd("character", 1);
+        range.setRangeText(String.fromCharCode(keyCode));
+		//range.text = String.fromCharCode(keyCode);
+
+        range.moveEnd("character", 1);
+		if (range.getRangeText() == sep) {
+			range.moveEnd("character", 1);
+			range.moveStart("character", 1);
+		}
+		range.select();
+		return false;
+	}		
+	
+    //right arrow management
+	if (keyCode == 39) {
+		range.moveStart("character", 1);
+		range.moveEnd("character", 1);
+		if (range.getRangeText() == sep) {
+			range.moveEnd("character", 1);
+			range.moveStart("character", 1);
+		}
+		if (range.getRangeText().length == 0)
+			range.moveStart("character", -1);
+		range.select();
+		return false;
+	}		
+
+    //left arrow management
+    if (keyCode == 37) {
+		range.moveStart("character", -1);
+		if (range.getRangeText().length > 1) {
+			range.moveEnd("character", -1);
+		}
+		if (range.getRangeText() == sep) {
+			range.moveEnd("character", -1);
+			range.moveStart("character", -1);
+		}
+		range.select();
+		return false;
+	}		
+}
+
+
+function handleonfocusEventForDate(event){
+    if (!event) event = window.event;
+    var srcElement = getSourceElement(event);
+
+	if (srcElement.getAttribute("stype") != "date") {
+		return true; 
+	}
+
+    var range =  new Range(srcElement);
+	//var range =  document.selection.createRange();
+	var range2 =  range.getRangeText().length - 1;
+	range.moveEnd("character", -range2);
+	range.select();
+}
+
+function handleonblurEventForDate(event){
+    if (!event) event = window.event;
+    var srcElement = getSourceElement(event);
+
+	if (srcElement.getAttribute("stype") != "date") {
+		return true; 
+	}
+}
+
+function handlemouseEventForDate(event){
+    if (!event) event = window.event;
+    var srcElement = getSourceElement(event);
+
+	if (srcElement.getAttribute("stype") != "date") {
+		return true; 
+	}
+	event.cancelBubble=true; 
+	event.returnValue = false; 
+	return false;
+}
+

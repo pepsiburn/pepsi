@@ -1,0 +1,318 @@
+/**
+* POPUP WINDOW CODE v1.1
+* Used for displaying DHTML only popups instead of using buggy modal windows.
+*
+* By Seth Banks (webmaster at subimage dot com)
+* http://www.subimage.com/
+*
+* Contributions by Eric Angel (tab index code) and Scott (hiding/showing selects for IE users)
+*
+* Up to date code can be found at http://www.subimage.com/dhtml/subModal
+*
+* This code is free for you to use anywhere, just keep this comment block.
+*/
+
+// Popup code
+var gPopupMask = null;
+var gPopupContainer = null;
+var gPopFrame = null;
+var gPopupTitleBar = null;
+var gReturnFunc;
+var gPopupIsShown = false;
+
+var gHideSelects = false;
+
+
+var gTabIndexes = new Array();
+// Pre-defined list of tags we want to disable/enable tabbing into
+var gTabbableTags = new Array("A","BUTTON","TEXTAREA","INPUT","IFRAME");
+
+/**
+ * Initializes popup code on load.
+ */
+function initPopUp() {
+    document.onkeydown = keyDownHandler;
+
+	// Add the HTML to the body
+	body = document.getElementsByTagName('body')[0];
+	popmask = document.createElement('div');
+	popmask.id = 'popupMask';
+	popcont = document.createElement('div');
+	popcont.id = 'popupContainer';
+	popcont.innerHTML = '' +
+		'<div id="popupInner">' +
+			'<div id="popupTitleBar">' +
+				'<div id="popupTitle"></div>' +
+				'<div id="popupControls">' +
+					'<img src="images/popup/close.gif" onclick="hidePopWin(false);" />' +
+				'</div>' +
+			'</div>' +
+			//'<iframe src="loading.html" style="width:100%;height:100%;background-color:transparent;" scrolling="auto" frameborder="0" allowtransparency="true" id="popupFrame" name="popupFrame" width="100%" height="100%"></iframe>' +
+			'<iframe style="width:100%;height:100%;background-color:transparent;" scrolling="auto" frameborder="0" allowtransparency="true" id="popupFrame" name="popupFrame" width="100%" height="100%"></iframe>' +
+		'</div>';
+	body.appendChild(popmask);
+	body.appendChild(popcont);
+
+	gPopupMask = document.getElementById("popupMask");
+	gPopupContainer = document.getElementById("popupContainer");
+	gPopFrame = document.getElementById("popupFrame");
+	gPopupTitleBar = document.getElementById("popupTitleBar");
+
+	// check to see if this is IE version 6 or lower. hide select boxes if so
+	// maybe they'll fix this in version 7?
+	var brsVersion = parseInt(window.navigator.appVersion.charAt(0), 10);
+	if (brsVersion <= 6 && window.navigator.userAgent.indexOf("MSIE") > -1) {
+		gHideSelects = true;
+	}
+    gPopFrame.src = "loading.html";
+
+    // Add onclick handlers to 'a' elements of class submodal or submodal-width-height
+	var elms = document.getElementsByTagName('a');
+	for (i = 0; i < elms.length; i++) {
+		if (elms[i].className.indexOf("submodal") == 0) {
+			// var onclick = 'function (){showPopWin(\''+elms[i].href+'\','+width+', '+height+', null);return false;};';
+			// elms[i].onclick = eval(onclick);
+			elms[i].onclick = function(){
+				// default width and height
+				var width = 400;
+				var height = 200;
+				// Parse out optional width and height from className
+				params = this.className.split('-');
+				if (params.length == 3) {
+					width = parseInt(params[1]);
+					height = parseInt(params[2]);
+				}
+				showPopWin(this.href,width,height,null); return false;
+			}
+		}
+	}
+}
+//addEvent(window, "load", initPopUp);
+
+ /**
+	* @argument width - int in pixels
+	* @argument height - int in pixels
+	* @argument url - url to display
+	* @argument returnFunc - function to call when returning true from the window.
+	*/
+var userWidth;
+var userHeight;
+
+function showWaitPopup(validationFlag) {
+	//come richiesto da abbiamo eliminato la "WaitPopup"
+	/*
+	if (validationFlag) {
+		try {
+			if (document.activeElement.className.indexOf("noWaitPopup") == -1) {
+	        	showPopWin(undefined, 400, 80, undefined, undefined, true);
+	        }
+		} catch (error) {
+        	showPopWin(undefined, 400, 80, undefined, undefined, true);
+		}
+	}
+	*/
+}
+
+function showPopWin(url, width, height, returnFunc, title, hideTitleBar) {
+    userWidth = width;
+    userHeight = height;
+    if (!document.getElementById("popupContainer")) {
+        initPopUp();
+    }
+    gPopupIsShown = true;
+	gPopupMask.style.display = "block";
+	gPopupContainer.style.display = "block";
+    // calculate where to place the window on screen
+
+	//var titleBarHeight = parseInt(document.getElementById("popupTitleBar").offsetHeight, 10);
+	var titleBarHeight = parseInt(gPopupTitleBar.offsetHeight, 10);
+    var fullHeight = getViewportHeight();
+    var fullWidth = getViewportWidth();
+    if (width > (fullWidth - 10)) {
+        width = (fullWidth - 10);
+    }
+    if (height > (fullHeight - titleBarHeight - 10)) {
+        height = (fullHeight - titleBarHeight - 10);
+    }
+	gPopupContainer.style.width = width + "px";
+	gPopupContainer.style.height = (height+titleBarHeight) + "px";
+	// need to set the width of the iframe to the title bar width because of the dropshadow
+	// some oddness was occuring and causing the frame to poke outside the border in IE6
+
+	//gPopFrame.style.width = parseInt(document.getElementById("popupTitleBar").offsetWidth, 10) + "px";
+    if (gPopupTitleBar.offsetWidth > 0) {
+        gPopFrame.style.width = parseInt(document.getElementById("popupTitleBar").offsetWidth, 10) + "px";
+    }
+	gPopFrame.style.height = (height) + "px";
+
+    centerPopWin(width, height);
+
+    // set the url
+    if (url) {
+    	setTimeout("setUrl('" + url + "')", 50);
+    }
+    gPopFrame.src = "loading.html";
+
+	gReturnFunc = returnFunc;
+	// for IE
+	if (gHideSelects == true) {
+		hideSelectBoxes();
+	}
+	if (title) {
+        document.getElementById("popupTitle").innerHTML = title;
+    } else {
+        window.setTimeout("setPopTitle();", 50);
+    }
+    if (hideTitleBar) {
+        gPopupTitleBar.style.display = "none";
+    } else {
+        gPopupTitleBar.style.display = "block";
+    }
+    //alert("readyState2=" + gPopFrame.readyState);
+}
+
+function setUrl(url) {
+    gPopFrame.src = url;
+}
+
+//
+var gi = 0;
+var userMargin = 10;
+
+function centerPopWin(width, height) {
+	if (gPopupIsShown == true) {
+		if (width == null || isNaN(width)) {
+			width = gPopupContainer.offsetWidth;
+            width = userWidth;
+		}
+		if (height == null) {
+			height = gPopupContainer.offsetHeight;
+            height = userHeight;
+		}
+
+		var fullHeight = getViewportHeight();
+		var fullWidth = getViewportWidth();
+        var titleBarHeight = 16;
+		if (document.getElementById("popupTitleBar")) {
+	        titleBarHeight = parseInt(document.getElementById("popupTitleBar").offsetHeight, 10);
+		}
+
+        if (width > (fullWidth - userMargin)) {
+            width = (fullWidth - userMargin);
+        }
+        if (height > (fullHeight - titleBarHeight - userMargin)) {
+            height = (fullHeight - titleBarHeight - userMargin);
+        }
+
+        gPopupContainer.style.width = width + "px";
+        gPopupContainer.style.height = (height+titleBarHeight) + "px";
+        // need to set the width of the iframe to the title bar width because of the dropshadow
+        // some oddness was occuring and causing the frame to poke outside the border in IE6
+        if (gPopupTitleBar.offsetWidth > 0) {
+            gPopFrame.style.width = parseInt(document.getElementById("popupTitleBar").offsetWidth, 10) + "px";
+        }
+        gPopFrame.style.height = (height) + "px";
+
+		var theBody = document.documentElement;
+
+		var scTop = parseInt(theBody.scrollTop,10);
+		var scLeft = parseInt(theBody.scrollLeft,10);
+
+		gPopupMask.style.height = fullHeight + "px";
+		gPopupMask.style.width = fullWidth + "px";
+		gPopupMask.style.top = scTop + "px";
+		gPopupMask.style.left = scLeft + "px";
+
+		gPopupContainer.style.top = (scTop + ((fullHeight - (height+titleBarHeight)) / 2)) + "px";
+		gPopupContainer.style.left =  (scLeft + ((fullWidth - width) / 2)) + "px";
+		//alert(fullWidth + " " + width + " " + gPopupContainer.style.left);
+	}
+}
+addEvent(window, "resize", centerPopWin);
+//addResizeEvent(centerPopWin);
+window.onscroll = centerPopWin;
+
+/**
+ * @argument callReturnFunc - bool - determines if we call the return function specified
+ * @argument returnVal - anything - return value
+ */
+function hidePopWin(callReturnFunc, pReturnVal) {
+	if (pReturnVal == undefined && callReturnFunc == true && window.frames["popupFrame"]) {
+		pReturnVal = window.frames["popupFrame"].returnVal;
+	}
+	
+	gPopupIsShown = false;
+	if (gPopupMask == null) {
+		return;
+	}
+
+	gPopFrame.src = 'loading.html';
+	// display all select boxes
+	if (gHideSelects == true) {
+		displaySelectBoxes();
+	}
+    body = document.getElementsByTagName('body')[0];
+    body.removeChild(gPopupMask);
+    body.removeChild(gPopupContainer);
+
+	if (callReturnFunc == true && gReturnFunc != null) {
+		gReturnFunc(pReturnVal);
+	}
+}
+
+/**
+ * Sets the popup title based on the title of the html document it contains.
+ * Uses a timeout to keep checking until the title is valid.
+ */
+function setPopTitle() {
+    if (document.getElementById("popupTitle")) {
+        document.getElementById("popupTitle").innerHTML = window.frames["popupFrame"].document.title;
+        gPopFrame.src = "loading.html";
+    }
+}
+
+// Tab key trap. iff popup is shown and key was [TAB], suppress it.
+// @argument e - event - keyboard event that caused this function to be called.
+function keyDownHandler(e) {
+    if (!e) {
+        e = event;
+    }
+    if (gPopupIsShown && e.keyCode == 9) {
+        if (window.frames["popupFrame"].gotoContent) {
+            window.frames["popupFrame"].gotoContent.focus();
+        } else {
+            window.frames["popupFrame"].focus();
+        }
+        return false;
+    }
+}
+
+/**
+* Hides all drop down form select boxes on the screen so they do not appear above the mask layer.
+* IE has a problem with wanted select form tags to always be the topmost z-index or layer
+*
+* Thanks for the code Scott!
+*/
+function hideSelectBoxes() {
+	for(var i = 0; i < document.forms.length; i++) {
+		for(var e = 0; e < document.forms[i].length; e++){
+			if(document.forms[i].elements[e].tagName == "SELECT") {
+				document.forms[i].elements[e].style.visibility="hidden";
+			}
+		}
+	}
+}
+
+/**
+* Makes all drop down form select boxes on the screen visible so they do not reappear after the dialog is closed.
+* IE has a problem with wanted select form tags to always be the topmost z-index or layer
+*/
+function displaySelectBoxes() {
+	for(var i = 0; i < document.forms.length; i++) {
+		for(var e = 0; e < document.forms[i].length; e++){
+			if(document.forms[i].elements[e].tagName == "SELECT") {
+			document.forms[i].elements[e].style.visibility="visible";
+			}
+		}
+	}
+}

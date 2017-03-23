@@ -1,0 +1,891 @@
+/***********************************************/
+/* emx_nav_left.css                            */
+/* Use with template Halo_leftNav.html         */
+/***********************************************/
+
+/***********************************************/
+/* HTML tag styles                             */
+
+/************************************/
+html {
+    font-size: 100%; /* IE hack*/
+}
+
+body {
+    font-family: Verdana, Arial, sans-serif;
+    color: #039;
+    line-height: 1.2;
+    margin: 0em;
+    padding: 0em;
+    background-color: #dfe1e3;
+    background-image: url( ../images/body_bg.gif );
+    background-attachment: fixed;
+    background-repeat: repeat-x;
+}
+
+* {
+    margin: 0em;
+    padding: 0em;
+}
+
+/************************************/
+
+/************************************/
+/* hyperlink and anchor tag styles  */
+/************************************/
+
+a {
+    text-decoration: none;
+    color: #039;
+}
+
+a:link {
+    text-decoration: underline;
+    color: #039;
+}
+
+a:visited {
+    text-decoration: underline;
+    color: #039;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #06f;
+}
+
+/************************************/
+
+/************************************/
+/* Header tag styles                */
+/************************************/
+
+h1 {
+    font-size: 1.1em;
+    color: #039;
+}
+
+h2 {
+    font-size: 1em;
+    color: #003399;
+}
+
+h3 {
+    color: #003399;
+}
+
+/************************************/
+
+/************************************/
+/* List Tags                        */
+/************************************/
+
+ul {
+    list-style-type: circle;
+    padding: 0em 0em 0em 1.5em;
+}
+
+ul ul {
+    list-style-type: disc;
+}
+
+ul ul ul {
+    list-style-type: none;
+}
+
+/************************************/
+
+/************************************/
+
+/* HTML tag styles                             */
+/***********************************************/
+
+/***********************************************/
+/* Layout Divs                                 */
+
+/************************************/
+/************************************/
+#masthead {
+    z-index: 3000;
+    padding: 0.3em 0.3em;
+}
+
+#wrap {
+    margin: 0em 0.3em 0em 0.2em;
+}
+
+#pagecell1 {
+    border-top: 1px solid #cccccc;
+    font-size: 0.8em;
+    width: 100%;
+}
+
+/************************************/
+#pageNav {
+    border-bottom: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    width: 11em;
+    float: left;
+}
+
+/************************************/
+div.mainColumn {
+    margin: 0em 0em 0em 11em;
+    padding: 0em 0em 0.2em 0em;
+    border-left: 1px solid #ccd2d2;
+}
+
+div.mainColumn100 {
+    margin: 0em 0em 0em 0em;
+    padding: 0em 0em 0.2em 0em;
+    border-left: 1px solid #ccd2d2;
+}
+
+/************************************/
+
+/* End Layout Divs                             */
+/***********************************************/
+
+/***********************************************/
+/*Component Divs                               */
+
+/************************************/
+#siteName {
+    padding: 0em;
+    font-weight: normal;
+    margin: 0em;
+}
+
+/************************************/
+
+#utility {
+    font-size: 0.8em;
+    position: absolute;
+    top: 0.5em;
+    right: 1em;
+}
+
+/************************************/
+#breadCrumb {
+    padding: 0px 0px 0.1em 0.4em;
+}
+
+div.body {
+    display: block;
+    padding: 0em 0.3em;
+}
+
+div#menuDescription h3 {
+    display: block;
+    font-size: 1.6em;
+    color: #039;
+    margin: 0.5em 0em 0.5em 0.2em;
+}
+
+div#menuDescription p {
+    display: block;
+    font-size: 1.25em;
+    color: #039;
+    margin: 0.2em 0em 0.6em 0.3em;
+}
+
+div#menuDescription ul li {
+    list-style-type: circle;
+    font-size: 1.2em;
+    color: #069;
+    margin: 0.5em 0em 0.2em 1em;
+}
+
+div#menuDescription ul li a {
+    text-decoration: underline;
+}
+
+div#menuDescription ul li p {
+    display: block;
+    font-size: 1em;
+    margin: 0.2em 0em 0.5em 0em;
+}
+
+div#menuDescription ul li ul li {
+    list-style-type: square;
+    font-size: 1em;
+    color: #069;
+    margin: 0.5em 0em 0.2em 1em;
+}
+
+div#menuDescription ul li ul li a {
+    font-size: 0.8em;
+    text-decoration: underline;
+}
+
+div#menuDescription li.disabled a {
+    color: #666;
+}
+
+div#menuDescription li.restricted a {
+    background-image: url( ../images/safetylook.gif );   
+    background-repeat: no-repeat; 
+    background-position: 0.1em 0.2em;
+    padding-left: 12px;
+}
+
+/************************************/
+
+/************************************/
+#footer {
+    border-top: 1px solid #cccccc;
+    font-size: 0.7em;
+    line-height: 1.2;
+    padding: 0.3em 0.5em 0.5em 0.5em;
+    clear: both;
+}
+
+#footer a.w3c {
+    float: left;
+    margin: 0em 0.3em;
+}
+
+#footer a.w3c img {
+    border: 0px;
+}
+
+#footer #siteInfo {
+    margin: 0px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/***********************************************/
+/*End Component Divs                           */
+/***********************************************/
+#message {
+    font-weight: bold;
+    margin: 0.2em 0.4em;
+    border: 1px solid red;
+    padding: 0.2em 0.4em;
+    display: block;
+    background-image: url( ../images/msg_bg.gif );
+}
+
+/************************************/
+/* Form and related Tags            */
+/************************************/
+fieldset {
+    margin: 0.5em 0em 0em 0em;
+    padding: 0em 0em 0.5em 0em;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #003399;
+    padding: 0em 0.5em;
+    margin: 0em 1em;
+}
+
+legend.empty {
+    padding: 0em 0em;
+    margin: 0em -1em;
+}
+
+div.fieldsetBanner {
+    float: right;
+    clear: both;
+    font-size: 0.8em;
+    margin-top: -0.8em;
+    margin-bottom: 0.4em;
+}
+
+div.cleardiv {
+    clear: both;
+    min-height: 0.7em;
+    height: 1px;
+    overflow: hidden;
+}
+
+div.fieldsetBanner a {
+    padding: 0.1em 0em;
+}
+
+div.fieldsetBanner a.trottle, div.fieldsetBanner a.close {
+    padding: 0.1em 0.4em 0.1em 1em;
+    background-repeat: no-repeat;
+    background-position: 2px;
+    text-decoration: none;
+    padding-left:18px;
+}
+
+div.fieldsetBanner a.trottle:hover, div.fieldsetBanner a.close:hover {
+    text-decoration: none;
+    border-bottom: 1px dotted #bbb;
+}
+
+div.fieldsetBanner a.expanded {
+    background-image: url( ../images/adfgen_frame_riduci.gif );
+}
+
+div.fieldsetBanner a.collapsed {
+    background-image: url( ../images/adfgen_frame_espandi.gif );
+}
+
+div.fieldsetBanner a.close {
+    background-image: url( ../images/adfgen_frame_chiudi.gif );
+}
+
+div.layerFrameBody {
+    /* overflow: auto; */
+    overflow:visible; /* ie6/7 width fix */
+  	width:auto;  /* ie6/7 width fix */
+}
+
+div.layerFrameBodyCollapsed {
+    display: none;
+}
+
+div.goToTop {
+    text-align:right;
+    padding-right:0.5em;
+    font-size: 0.8em;
+}
+
+div.layerFrameBody div.field {
+    display: block;
+    clear: both;
+    min-height:1em;
+}
+
+div.layerFrameBody div.field label {
+    display: block;
+    width: 16%;
+    text-align: right;
+    float: left;
+    color: #003399;
+    margin: 0.2em 0.2em 0.2em 0.1em;
+}
+
+input, textarea, select {
+    background-color: #FFFFFE;
+}
+
+div.layerFrameBody div.field input, div.layerFrameBody div.field textarea, div.layerFrameBody div.field select, div.layerFrameBody div.field span {
+    display: block;
+    padding: 1px;
+    float: left;
+    color: #003399;
+    font-size: 1em;
+    font-weight: bold;
+    margin: 0.2em 0.2em 0.2em 0.1em;
+}
+
+td input, td textarea, td select{
+    display: block;
+    padding: 1px;
+    background-color: #FFFFFE;
+    color: #003399;
+    font-size: 1em;
+    font-weight: bold;
+    margin: 0.1em 0.2em 0.1em 0.1em;
+}
+
+td input.filterFine, td select.filterFine{
+    display: block;
+    padding: 1px;
+    background-color: #FFFFFE;
+    color: #003399;
+    font-size: 1opx;
+    font-weight: normal;
+    margin: 0.1em 0.1em 0.1em 0.1em;
+}
+div.layerFrameBody div.field span {
+    background-color: transparent;
+    font-weight: normal;
+    width: 2em;
+}
+
+div.layerFrameBody div.field span.systemAttr {
+    background-color: transparent;
+    font-weight: bold;
+    width: 18em;
+}
+
+input.number {
+    text-align: right;
+}
+
+div.layerFrameBody div.field input.number {
+    width: 10em;
+}
+
+input.date {
+    width: 6em;
+}
+
+input.radio {
+    background-color: transparent;
+}
+
+textarea {
+    width: 68%;
+}
+
+input.required, textarea.required, select.required {
+    background-color: #def;
+}
+
+input.error, textarea.error, select.error {
+    background-color: #FFE3D2;
+}
+
+input.protected, textarea.protected, select.protected {
+    background-color: #eee;
+    color: #003399;
+    font-weight: bold;
+    border: 1px solid #999;
+    cursor: default;
+}
+
+select.protected {
+    background-color: #fefefe;
+}
+
+
+input.popup {
+    display: block;
+    border:0px;
+    width:19px;
+    height:19px;
+    padding: 0px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-image: url( ../images/popup_off.gif );
+    float: left;
+    margin: 0.2em 0.0em 0.2em 0.1em !important;
+    cursor: pointer;
+}
+
+input.popup:hover {
+    background-image: url( ../images/popup_on.gif );
+}
+
+span.datePicker {
+    margin: 0em;
+    padding: 0em;
+}
+
+a.popupCalendar {
+    display: block;
+    padding: 3px 0px 1px 14px;
+    background-repeat: no-repeat;
+    background-image: url( ../images/calendar_off.gif );
+    float: left;
+    margin: 0em;
+}
+
+a.popupCalendar:link, a.popupCalendar:visited {
+    text-decoration: none;
+}
+
+a.popupCalendar:hover {
+    text-decoration: none;
+    background-image: url( ../images/calendar_on.gif );
+}
+
+a.hidden, label.hidden, div.hidden, span.hidden {
+    position: absolute;
+    left: -3000px;
+}
+
+a#applogo, a#applogo img {
+    border: 0px;
+}
+
+#pageTitle {
+    display: inline;
+    font-size: 1.3em;
+    font-weight: normal;
+    margin-left: -0.2em;
+}
+
+#infobar {
+    padding-top: 2em;
+    float: left;
+}
+
+#centeredLogo {
+    background-image: url( ../images/acquistinretepa.gif );
+    background-repeat: no-repeat;
+    background-position: 0px 3em;
+    width: 246px;
+    height: 80px;
+    margin: 0em auto 2em auto;
+    padding-top: 3em;
+}
+
+ul.buttonBar {
+    padding: 0.3em 0.5em;
+    margin: 0.5em 0em;
+    height: 2.2em;
+    border: 1px solid #99a;
+    background-image: url( ../images/oriz_big.gif );
+}
+
+ul.buttonBar li {
+    float: left;
+    background-image: url( ../images/oriz_inv_small.gif );
+    background-repeat: repeat;
+    display: block;
+    padding: 0em;
+    margin: 0em 0.5em;
+    border-style: outset;
+    border-color: #ffffff;
+    border-width: 2px;
+}
+
+ul.buttonBar li:hover {
+    background-image: url( ../images/oriz_inv_med.gif );
+}
+
+ul.buttonBar li:active {
+    background-image: url( ../images/oriz_small.gif );
+    border-width: 2px;
+    border-style: inset;
+}
+
+ul.buttonBar li input {
+    background-repeat: no-repeat;
+    background-position: 0em 0.3em;
+    background-color: transparent;
+    padding: 0em 0.2em 0em 22px;
+    margin: 0em;
+    text-align: left;
+    border-style: ridge;
+    border-color: #ffffff;
+    border-width: 0px;
+    cursor: pointer;
+    font-size: 1em;
+    font-family: Verdana, Arial, sans-serif;
+    color: black;
+    height: 1.8em;
+}
+
+ul.buttonBar li:active input {
+    background-position: 0.1em 0.4em;
+}
+
+ul.buttonBar li a {
+    display:block;
+    background-repeat: no-repeat;
+    background-position: 0em 0.0em;
+    background-color: transparent;
+    padding: 0em 1em 0em 22px;
+    margin: 0.2em 0em 0em 0em;
+    text-align: left;
+    text-decoration:none;
+    vertical-align:middle;
+    border-style: ridge;
+    border-color: #ffffff;
+    border-width: 0px;
+    cursor: pointer;
+    font-size: 1em;
+    color: black;
+    height: 1.6em;
+}
+
+ul.buttonBar li a:visited {
+    text-decoration:none;
+    color: black;
+}
+
+ul.buttonBar li:active a {
+    background-position: 0.1em 0.1em;
+}
+
+input.buttonHome, a.buttonHome {
+    background-image: url( ../images/button/home.gif );
+}
+
+input.buttonSearch, a.buttonSearch {
+    background-image: url( ../images/button/find.gif );
+}
+
+input.buttonFineSearch, a.buttonFineSearch {
+    background-image: url( ../images/button/find.gif );
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 30px;
+    height: 25px;
+}
+
+input.buttonNew, a.buttonNew {
+    background-image: url( ../images/button/new.gif );
+}
+
+input.buttonView, a.buttonView {
+    background-image: url( ../images/button/view.gif );
+}
+
+input.buttonSave, a.buttonSave {
+    background-image: url( ../images/button/save.gif );
+}
+
+input.buttonUndo, a.buttonUndo {
+    background-image: url( ../images/button/undo.gif );
+}
+
+input.buttonConfirm, a.buttonConfirm {
+    background-image: url( ../images/button/confirm.gif );
+}
+
+input.buttonBack, a.buttonBack {
+    background-image: url( ../images/button/back.gif );
+}
+
+input.buttonEdit, a.buttonEdit {
+    background-image: url( ../images/button/edit.gif );
+    background-repeat: no-repeat;
+}
+
+input.buttonDelete, a.buttonDelete {
+    background-image: url( ../images/button/delete.gif );
+}
+
+input.buttonPrint, a.buttonPrint {
+    background-image: url( ../images/button/print.gif );
+}
+
+input.buttonRefresh, a.buttonRefresh {
+    background-image: url( ../images/button/refresh.gif );
+}
+
+input.buttonExtend, a.buttonExtend {
+    background-image: url( ../images/button/estendi.png );
+}
+
+input.buttonActivate, a.buttonActivate {
+    background-image: url( ../images/button/attiva.png );
+}
+
+input.buttonDeactivate, a.buttonDeactivate {
+    background-image: url( ../images/button/disattiva.png );
+}
+
+input.buttonCopy, a.buttonCopy {
+    background-image: url( ../images/button/copia.png );
+}
+
+input.buttonSaveAndContinue, a.buttonSaveAndContinue {
+    background-image: url( ../images/button/saveAndContinue.png );
+}
+
+/* This is to hack a bug in new mozilla firefox version that display hidden fields */
+input[type=hidden] {
+    position: absolute;
+    left: -3000px;
+}
+
+input.checkbox {
+    background-color: transparent;
+}
+
+td.right {
+    text-align:right;
+}
+
+td.center {
+    text-align:center;
+}
+
+tr.right {
+    text-align:right;
+}
+
+tr.center {
+    text-align:center;
+}
+
+div.autocomplete-item {
+    font:normal 9px tahoma, arial, helvetica, sans-serif;
+    padding:0px 4px;
+    border:1px solid #fff;
+    border-bottom:1px solid #eeeeee;
+    white-space:normal;
+	color: #039;
+}
+
+.uppercase
+{
+	text-transform:uppercase;
+}
+.invisible
+{
+	display:none;
+	visibility:hidden;
+}
+
+.submit {
+	background: transparent;
+	border-top: 0px;
+	border-right: 0px;
+	border-bottom: 1px solid #00F;
+	border-left: 0px;
+	color: #00F;
+	display: inline;
+	margin: 0px;
+	padding: 0px;
+	cursor:pointer;
+  	overflow:visible; /* ie6/7 width fix */
+  	width:auto; /* ie6/7 width fix */
+}
+
+*:first-child+html .submit {		/* hack needed for IE 7 */
+	border-bottom: 0px;
+	text-decoration: underline;
+}
+
+* html .submit {				/* hack needed for IE 5/6 */
+	border-bottom: 0px;
+	text-decoration: underline;
+}
+
+div.linkContainer
+{
+	width: 80%; 
+	margin-left: 10% ; 
+	margin-right: 10%;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+div.linkContainer a
+{
+	font-weight: bold;
+	padding-left: 5%;
+	padding-right: 5%;
+	padding-top: 0px;
+	padding-bottom:0px;
+}
+
+/* This is to hack a bug in new mozilla firefox version that display hidden fields */
+input[type=hidden] {
+    position: absolute;
+    left: -3000px;
+}
+
+div#container{margin: 1em 0em -1em 0em}
+
+div.listaScroll{
+	height:100%;
+	width:100%;
+	overflow:auto;
+}
+div.listaScrollGrande{
+	height:100%;
+	width:100%;
+	overflow:auto;
+}
+
+ul#menu, ul#menu li{list-style: none;margin: 0;line-height: 1.3}
+ul#menu{padding:7px 0;text-align:left;border-bottom:0px solid #ACACDC}
+ul#menu li{display: inline;padding: 7px 7px 7px 0;margin-left: 3px;background: url(../images/tabRadioBk.png) no-repeat top right}
+ul#menu a{padding: 7px 0 7px 7px;background: url(../images/tabRadioBk.png) no-repeat top left;text-decoration: none; color:#555}
+ul#menu li#current,ul#menu li#current a{background-image: url(../images/tabRadioBkActive.png);border-bottom: 1px solid #FFF}
+ul#menu li#current a,ul#menu li a:hover{color: #003}
+
+* html ul#menu li{padding: 0 4px 0  0}   /* hack per IE5.x e IE6 */
+*:first-child+html ul#menu li{padding: 0 4px 0 0} /* hack per IE7 */
+
+input.buttonEditRule, a.buttonEditRule {
+    background-image: url( /ext/resources/img/silk/icons/button/brick_edit.png );
+    background-repeat: no-repeat;
+}
+
+.radioSubmit {
+	background: transparent;
+	border-top: 0px;
+	border-right: 0px;
+	border-bottom: 0px;
+	border-left: 0px;
+	color: #00F;
+	display: inline;
+	margin: 0px;
+	padding: 0px;
+	cursor:pointer;
+  	overflow:visible; /* ie6/7 width fix */
+  	width:170px; /* ie6/7 width fix */
+  	
+}
+
+.nome_utente span{
+    color: #663333;
+    font-weight: bold;
+}
+
+/* Rifacimento layout scheda vendita*/
+div.buttonBarCenter {
+	
+	padding:0 0 0 1.5em;
+	text-align:center;
+}
+
+div.buttonBarCenter  input.buttonNew, a.buttonNew {
+	background-image:url("../images/button/new.gif");
+	background-repeat:no-repeat;
+	padding:0 1em 0 22px;
+}
+
+
+div.subtitle{
+	
+	display:block;
+	font-weight:bold;
+	height:30px;
+}
+
+div.separatorDiv{
+	  clear: both;
+    height: 8em;
+    overflow: hidden;
+}
+
+div.separatorDivMedium{
+	clear: both;
+    height: 4em;
+    overflow: hidden;
+}
+
+/************************************/
+/* Stile aggiunto per scheda RDO  */
+/************************************/
+
+
+.risultati_ricerca_top_strumenti_help {
+	color: #666666;
+	font-size: 1em;
+	font-weight: bold;
+	margin-left: 0.8em;
+	margin-bottom: 15px;
+	float: left;
+	width: 94%;
+}
+div#message_loading 
+{
+	width: auto;
+	clear: both;
+	text-align: center;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 0.75em;
+	font-weight: bold;
+	color: #993333;
+	border: none;
+	padding-top: 5px;
+}
+.centered{
+align:center;
+}
+
+/*SDA3 MF1-F8 Alessandro Guida INIZIO */
+.detailSchedaTextArea {
+	width: 50%;
+	height: 8em;
+}
+/*SDA3 MF1-F8 Alessandro Guida FINE */
